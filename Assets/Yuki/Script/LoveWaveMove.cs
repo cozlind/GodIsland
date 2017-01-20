@@ -21,7 +21,10 @@ public class LoveWaveMove : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        Instantiate(loveField, FieldPos, Quaternion.EulerAngles(0,0,0));
-        Destroy(gameObject);
+        if (col.gameObject.tag == "Ground")
+        {
+            Instantiate(loveField, FieldPos, Quaternion.EulerAngles(0, 0, 0));
+            Destroy(gameObject);
+        }
     }
 }
