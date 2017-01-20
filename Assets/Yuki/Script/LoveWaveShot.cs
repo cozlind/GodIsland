@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickPositionCreatePrefabScript : MonoBehaviour {
+public class LoveWaveShot : MonoBehaviour {
     private float shotWait = 0;
     [SerializeField]
     private GameObject LoveField;
-    private Vector3 hitPoint;
+    [SerializeField]
+    private GameObject LoveWave;
+    [HideInInspector]
+    public Vector3 hitPoint;
+    private GameObject player;
+    private Vector3 shotPos;
 
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -23,6 +28,11 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
             return;
         }
 
+        MouseClicks();
+    }
+
+    void MouseClicks()
+    {
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0))
         {
@@ -32,6 +42,9 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
             // boxcolliderをつける
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+            //Love波を放つ位置を決める為、メインカメラの位置を取得
+            shotPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+            
             // 仮想的な線を利用した衝突検出する
             // カメラから、マウス入力のあった位置までの間にある、オブジェクトを格納する
             // 任意の位置から任意の方向に向けて架空の線を出し、その線分上にあるオブジェクトを取得する
@@ -61,7 +74,8 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
             {
                 return;
             }
-            Instantiate(LoveField, hitPoint, transform.rotation);
+
+            Instantiate(LoveWave, shotPos, transform.rotation);
         }
     }
 }
