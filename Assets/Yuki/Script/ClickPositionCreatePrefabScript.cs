@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ClickPositionCreatePrefabScript : MonoBehaviour {
-    [SerializeField]
-    private GameObject shot;
     private float shotWait = 0;
     public float speed = 3000.0f;
+    [SerializeField]
+    private GameObject Prefab;
+    public Vector3 hitPoint;
+
     void Start()
     {
 
@@ -26,8 +28,6 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
         {
             shotWait = 0.3f;
-
-            Vector3 hitPoint;
             //マウスカーソルからRay放射
             // maincameraにtagを設定する
             // boxcolliderをつける
@@ -48,8 +48,8 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
             // 第三引数には衝突情報、第四引数には検知を行う距離、第五引数にはレイヤーマスクをとります
             // ※第三引数まで必須
 
-            // Rayが飛ばされたところから、200の間にオブジェクトがあればtrueを返し、hitにそれを格納する
-            if (Physics.Raycast(ray, out hit, 200))
+            // Rayが飛ばされたところから、1000の間にオブジェクトがあればtrueを返し、hitにそれを格納する
+            if (Physics.Raycast(ray, out hit, 1000))
             {
                 if (hit.collider.gameObject == null)
                 {
@@ -62,7 +62,7 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
             {
                 return;
             }
-            
+            Instantiate(Prefab, hitPoint, transform.rotation);
         }
     }
 }
