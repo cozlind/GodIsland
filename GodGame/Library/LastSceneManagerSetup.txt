@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/Masuyama/LoveBeamTest.unity
+  isLoaded: 1
+  isActive: 1
