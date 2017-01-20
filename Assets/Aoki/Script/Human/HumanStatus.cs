@@ -6,12 +6,17 @@ using UnityEngine;
 [System.Serializable]
 public struct HumanStatus  {
 
+    public HumanStatus( Color color )
+    {
+        this.color = color;
+    }
+
     public Color color { get; set; }
 
-    public Material material { get; set; }
+    //public Material material { get; set; }
 
-    public float hp { get; set; }
-    public float attack { get; set; }
-    public bool CanBorn { get; set; }
+    //public float hp { get; set; }
+    //public float attack { get; set; }
+    //public bool CanBorn { get; set; }
 
 }

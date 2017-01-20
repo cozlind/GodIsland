@@ -7,17 +7,21 @@ public class BornAlgorithm : MonoBehaviour {
     //[SerializeField]
     //List<HumanStatus> humans;
 
-    public static HumanStatus GetBornStatus( HumanStatus status1, HumanStatus status2 )
+
+
+    public static HumanStatus GetBornAddStatus( HumanStatus status1, HumanStatus status2 )
     {
-        HumanStatus humanStatus = new HumanStatus();
+        HumanStatus humanStatus_ = new HumanStatus();
 
-        Color color = Color.white ;
+        Color color_ = Color.white ;
+        color_ = status1.color + status2.color;
+        color_.r = Mathf.Clamp(color_.r, 0, 1);
+        color_.g = Mathf.Clamp(color_.g, 0, 1);
+        color_.b = Mathf.Clamp(color_.b, 0, 1);
 
-        color = status1.color + status2.color;
+        humanStatus_.color = color_;
         
-
-
-        return humanStatus;
+        return humanStatus_;
     }
 
 }
