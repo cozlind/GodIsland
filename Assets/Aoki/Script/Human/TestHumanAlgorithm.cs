@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanStatus : MonoBehaviour {
+public class TestHumanAlgorithm : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
