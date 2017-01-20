@@ -34,7 +34,8 @@ public class LoveFieldManager : MonoBehaviour {
     {
         for (int i = 0; i < makeChildCount; i++)
         {
-            Instantiate(human, new Vector3(transform.position.x ,transform.position.y + 3,transform.position.z), transform.rotation);
+            float randomPos = Random.Range(-scale / 2, scale / 2);
+            Instantiate(human, new Vector3(transform.position.x + randomPos, transform.position.y + 3, transform.position.z + randomPos), transform.rotation);
         }
     }
 
