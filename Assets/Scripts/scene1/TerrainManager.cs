@@ -13,6 +13,8 @@ public class TerrainManager : MonoBehaviour {
     public GameObject peoplePfb;
     public GameObject treePfb;
     public GameObject titanPfb;
+    GameObject titan;
+    public Transform camera;
 
     void Start () {
         terrain = GetComponent<Terrain>();
@@ -37,10 +39,12 @@ public class TerrainManager : MonoBehaviour {
         terrainData.SetAlphamaps(0, 0, splatmapData);
 
 
-
-
         SpawnPeople();
         SpawnTrees();
+        SpawnTitan();
+
+        camera.transform.position=new Vector3(titan.transform.position.x+8, titan.transform.position.y +10, titan.transform.position.z + 8);
+        camera.LookAt(titan.transform);
     }
     [Range(0,0.005f)]
     public float brushStrength = 0.05f;
@@ -161,8 +165,8 @@ public class TerrainManager : MonoBehaviour {
             int posX, posY;
             do
             {
-                posX = Random.Range(1, width - 1);
-                posY = Random.Range(1, height - 1);
+                posX = Random.Range(width / 2-70, width / 2 + 70);
+                posY = Random.Range(height / 2 - 70, height / 2 + 70);
             }
             while (heights[posX, posY] < 30f/600f);
 
@@ -177,12 +181,24 @@ public class TerrainManager : MonoBehaviour {
             int posX, posY;
             do
             {
-                posX = Random.Range(1, width - 1);
-                posY = Random.Range(1, height - 1);
+                posX = Random.Range(width / 2 - 80, width / 2 + 80);
+                posY = Random.Range(height / 2 - 80, height / 2 + 80);
             }
             while (heights[posX, posY] < 30f / 600f);
 
             GameObject tree = Instantiate(treePfb, new Vector3(posX, heights[posX, posY] * 600+5 , posY), Quaternion.identity) as GameObject;
         }
+    }
+    void SpawnTitan()
+    {
+        int posX, posY;
+        do
+        {
+            posX = Random.Range(width / 2 - 50, width / 2 + 50);
+            posY = Random.Range(height / 2 - 50, height / 2 + 50);
+        }
+        while (heights[posX, posY] < 30f / 600f);
+
+        titan = Instantiate(titanPfb, new Vector3(posX, heights[posX, posY] * 600 + 5, posY), Quaternion.identity) as GameObject;
     }
 }
