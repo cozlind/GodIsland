@@ -13,6 +13,9 @@ public class LoveWaveShot : MonoBehaviour {
     private GameObject player;
     private Vector3 shotPos;
 
+    [SerializeField]
+    HumanManager humanManager;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera");
@@ -75,7 +78,8 @@ public class LoveWaveShot : MonoBehaviour {
                 return;
             }
 
-            Instantiate(LoveWave, shotPos, transform.rotation);
+            GameObject LoveShot = Instantiate(LoveWave, shotPos, transform.rotation);
+            LoveShot.GetComponent<LoveFieldManager>().HumanCreate = humanManager;
         }
     }
 }

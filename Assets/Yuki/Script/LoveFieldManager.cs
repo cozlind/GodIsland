@@ -11,6 +11,8 @@ public class LoveFieldManager : MonoBehaviour {
     public GameObject human;
     private bool countFinished = false;
     private bool makingChild = false;
+    private IHumanCreate humanCreate;
+    public IHumanCreate HumanCreate { set { humanCreate = value; } }
 	// Use this for initialization
 	void Start () {
         time = countTime;
