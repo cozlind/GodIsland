@@ -47,8 +47,11 @@ public class TerrainManager : MonoBehaviour {
 
         SpawnPeople();
         SpawnTrees();
-        SpawnTitan();
-
+        //SpawnTitan();
+        if( titan == null )
+        {
+            titan = GameObject.FindObjectOfType<BlackGiant>().gameObject;
+        }
         camera.transform.position=new Vector3(titan.transform.position.x+8, titan.transform.position.y +10, titan.transform.position.z + 8);
         camera.LookAt(titan.transform);
     }
