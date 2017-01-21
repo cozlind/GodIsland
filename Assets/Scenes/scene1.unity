@@ -3385,6 +3385,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46194c27bec292542a121be62078d4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrain: {fileID: 0}
+  terrainData: {fileID: 0}
+  height: 0
+  width: 0
   peoplePfb: {fileID: 1268200199696050, guid: b15a7af40eaa67941806ab7921bbadd0, type: 2}
   treePfb: {fileID: 1851861412548066, guid: 2e9c00549b38f2b41b83668225035709, type: 2}
   titanPfb: {fileID: 1103120757485714, guid: 3d6d7e1241c698545a65772f81793fd6, type: 2}
@@ -3786,7 +3790,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: b84a06836f4e4094d82d1d16d20b57d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 19bad34858adecc4fbdca2dfc88c333e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
