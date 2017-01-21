@@ -52,7 +52,7 @@ public class TerrainTest : MonoBehaviour {
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        if (Input.GetMouseButton(0)&&Physics.Raycast(ray,out hit)&&hit.collider!=null)
+        if (!Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButton(0)&&Physics.Raycast(ray,out hit)&&hit.collider!=null)
         {
             int pointY = (int)(hit.point.x*terrain.terrainData.heightmapWidth/terrain.terrainData.size.x);
             int pointX = (int)(hit.point.z * terrain.terrainData.heightmapHeight / terrain.terrainData.size.z);
@@ -73,7 +73,7 @@ public class TerrainTest : MonoBehaviour {
             terrain.terrainData.SetHeights(0, 0, heights);
             terrainData.SetAlphamaps(0, 0, splatmapData);
         }
-        else if (Input.GetMouseButton(1) && Physics.Raycast(ray, out hit) && hit.collider != null)
+        else if (Input.GetKey(KeyCode.LeftAlt)&&Input.GetMouseButton(0) && Physics.Raycast(ray, out hit) && hit.collider != null)
         {
             int pointY = (int)(hit.point.x * terrain.terrainData.heightmapWidth / terrain.terrainData.size.x);
             int pointX = (int)(hit.point.z * terrain.terrainData.heightmapHeight / terrain.terrainData.size.z);
