@@ -10,6 +10,10 @@ public class TerrainManager : MonoBehaviour {
     private int height, width;
     float[,,] splatmapData;
 
+    public GameObject peoplePfb;
+    public GameObject treePfb;
+    public GameObject titanPfb;
+
     void Start () {
         terrain = GetComponent<Terrain>();
         terrainData = terrain.terrainData;
@@ -38,7 +42,7 @@ public class TerrainManager : MonoBehaviour {
         SpawnPeople();
         SpawnTrees();
     }
-    [Range(0,0.015f)]
+    [Range(0,0.005f)]
     public float brushStrength = 0.05f;
     [Range(0,300)]
     public int brushRadius = 100;
@@ -160,11 +164,9 @@ public class TerrainManager : MonoBehaviour {
                 posX = Random.Range(1, width - 1);
                 posY = Random.Range(1, height - 1);
             }
-            while (heights[posX, posY] < 20/600);
+            while (heights[posX, posY] < 30f/600f);
 
-            GameObject people = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            people.transform.position = new Vector3(posX, heights[posX, posY]*600+1, posY);
-            people.AddComponent<Rigidbody>();
+            GameObject people = Instantiate(peoplePfb, new Vector3(posX, heights[posX, posY] * 600 + 5, posY),Quaternion.identity) as GameObject;
         }
     }
     public int treeNum = 3;
@@ -178,10 +180,9 @@ public class TerrainManager : MonoBehaviour {
                 posX = Random.Range(1, width - 1);
                 posY = Random.Range(1, height - 1);
             }
-            while (heights[posX, posY] < 20 / 600);
+            while (heights[posX, posY] < 30f / 600f);
 
-            GameObject tree = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            tree.transform.position = new Vector3(posX, heights[posX, posY] * 600+1, posY);
+            GameObject tree = Instantiate(treePfb, new Vector3(posX, heights[posX, posY] * 600+5 , posY), Quaternion.identity) as GameObject;
         }
     }
 }
