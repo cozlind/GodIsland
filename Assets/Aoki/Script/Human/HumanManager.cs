@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HumanManager : MonoBehaviour, IHumanCreate {
 
-    List<Human> _HumanList = new List<Human>();
+    public List<Human> _HumanList = new List<Human>();
 
     [SerializeField]
     GameObject humanPrefab;
