@@ -41,7 +41,7 @@ public class LoveWaveMove : MonoBehaviour {
                 //Instantiate(TreePrefab, FieldPos, TreePrefab.transform.rotation);
                 treeManager.AddTree( FieldPos, Quaternion.identity );
             }
-            else
+            else if( type == LoveType.Love )
             {
                 Instantiate(loveField, FieldPos, Quaternion.EulerAngles(0, 0, 0));
 
