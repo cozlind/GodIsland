@@ -29,6 +29,10 @@ public class LoveTypeUIChange : MonoBehaviour {
     {
         script.type = LoveType.Broke;
     }
+    public void onCreate()
+    {
+        script.type = LoveType.Create;
+    }
 
 
 }
