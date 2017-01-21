@@ -13,7 +13,6 @@ public class HumanManager : MonoBehaviour, IHumanCreate
     [SerializeField]
     Material drawMaterial;
 
-
     [SerializeField]
     GameObject humanPrefab;
 

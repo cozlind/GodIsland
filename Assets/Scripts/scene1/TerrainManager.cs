@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TerrainManager : MonoBehaviour {
 
-    Terrain terrain;
-    TerrainData terrainData;
-    public static float[,] heights;
-    private int height, width;
+    public Terrain terrain;
+    public TerrainData terrainData;
+    public float[,] heights;
+    public int height, width;
     float[,,] splatmapData;
 
     public GameObject peoplePfb;
