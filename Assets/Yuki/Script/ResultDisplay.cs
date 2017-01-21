@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResultDisplay : MonoBehaviour {
+public class ResultDisplay : MonoBehaviour
+{
+    public Text surviveHumansText;
+    public Text deadHumansText;
+    public Text birthHumansText;
 
-    Text surviveHumansText;
-    Text deadHumansText;
-    Text birthHumansText;
-	// Use this for initialization
-	void Start () {
-        surviveHumansText = GameObject.Find("SurviveHumansText").GetComponent<Text>();
-        deadHumansText = GameObject.Find("DeadHumansText").GetComponent<Text>();
-        birthHumansText = GameObject.Find("BirthHumansText").GetComponent<Text>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        surviveHumansText.text = "SurviveHumans:" + ResultManager.allHumansNum;
-        deadHumansText.text = "DeadHumans:" + ResultManager.deadHumansNum;
-        birthHumansText.text = "BirthHumans:" + ResultManager.birthHumansNum;
-	}
+    ResultData result_date;
+
+    // Use this for initialization
+    void Start()
+    {
+        result_date = ResultData.Instance;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        surviveHumansText.text = "SurviveHumans:" + result_date.AliveHuman;
+        deadHumansText.text = "DeadHumans:" + result_date.deadHuman;
+        birthHumansText.text = "BirthHumans:" + result_date.createHuman;
+    }
 }
