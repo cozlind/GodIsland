@@ -11,10 +11,15 @@ public class LoveFieldManager : MonoBehaviour {
     public GameObject human;
     private bool countFinished = false;
     private bool makingChild = false;
-	// Use this for initialization
-	void Start () {
+    //private IHumanCreate humanCreate;
+    [SerializeField]
+    List<GameObject> _ParentObjectList = new List<GameObject>();
+
+    // Use this for initialization
+    void Start () {
         time = countTime;
         transform.localScale = new Vector3(scale, scale, scale);
+        
 	}
 	
 	// Update is called once per frame
@@ -35,7 +40,13 @@ public class LoveFieldManager : MonoBehaviour {
         for (int i = 0; i < makeChildCount; i++)
         {
             float randomPos = Random.Range(-scale / 2, scale / 2);
-            Instantiate(human, new Vector3(transform.position.x + randomPos, transform.position.y + 3, transform.position.z + randomPos), transform.rotation);
+            Vector3 position = new Vector3(transform.position.x + randomPos, transform.position.y + 3, transform.position.z + randomPos);
+            // Instantiate(human, new Vector3(transform.position.x + randomPos, transform.position.y + 3, transform.position.z + randomPos), transform.rotation);
+            HumanStatus status1 = _ParentObjectList[i * 2].GetComponent<Human>().GetStatus();
+            HumanStatus status2 = _ParentObjectList[i * 2 + 1].GetComponent<Human>().GetStatus();
+            IHumanCreate humanCreate = GameObject.Find("HumanManager").GetComponent<HumanManager>();
+            humanCreate.Create(status1, status2,position );
+
         }
     }
 
@@ -51,6 +62,7 @@ public class LoveFieldManager : MonoBehaviour {
                 if (dist <= scale / 2)
                 {
                     humanCount++;
+                    _ParentObjectList.Add( obj );
                 }
             }
 
