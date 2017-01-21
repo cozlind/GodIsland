@@ -13,6 +13,8 @@ public class TerrainManager : MonoBehaviour {
     public GameObject peoplePfb;
     public GameObject treePfb;
     public GameObject titanPfb;
+    GameObject titan;
+    public Transform camera;
 
     void Start () {
         terrain = GetComponent<Terrain>();
@@ -37,10 +39,12 @@ public class TerrainManager : MonoBehaviour {
         terrainData.SetAlphamaps(0, 0, splatmapData);
 
 
-
-
         SpawnPeople();
         SpawnTrees();
+        SpawnTitan();
+
+        camera.transform.position=new Vector3(titan.transform.position.x+8, titan.transform.position.y +10, titan.transform.position.z + 8);
+        camera.LookAt(titan.transform);
     }
     [Range(0,0.005f)]
     public float brushStrength = 0.05f;
@@ -195,6 +199,6 @@ public class TerrainManager : MonoBehaviour {
         }
         while (heights[posX, posY] < 30f / 600f);
 
-        GameObject titan = Instantiate(titanPfb, new Vector3(posX, heights[posX, posY] * 600 + 5, posY), Quaternion.identity) as GameObject;
+        titan = Instantiate(titanPfb, new Vector3(posX, heights[posX, posY] * 600 + 5, posY), Quaternion.identity) as GameObject;
     }
 }
