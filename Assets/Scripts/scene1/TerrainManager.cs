@@ -16,6 +16,12 @@ public class TerrainManager : MonoBehaviour {
     GameObject titan;
     public Transform camera;
 
+    [SerializeField]
+    HumanManager humanManager;
+
+    [SerializeField]
+    List<HumanStatus> StartHumanStatusList = new List<HumanStatus>();
+
     void Start () {
         terrain = GetComponent<Terrain>();
         terrainData = terrain.terrainData;
@@ -163,14 +169,37 @@ public class TerrainManager : MonoBehaviour {
     {
         for (int i = 0; i< peopleNum; i++){
             int posX, posY;
+            int rectX = (int)terrain.terrainData.size.x / 4;
+            int rectY = (int)terrain.terrainData.size.y / 4;
+
+            int rectWidth = (int)terrain.terrainData.size.x / 2;
+            int rectHeight = (int)terrain.terrainData.size.y / 2;
+            /*
             do
             {
-                posX = Random.Range(width / 2-70, width / 2 + 70);
-                posY = Random.Range(height / 2 - 70, height / 2 + 70);
+                //posX = Random.Range(width / 2-70, width / 2 + 70);
+                //posY = Random.Range(height / 2 - 70, height / 2 + 70);
+                posX = Random.Range(rectX, rectWidth);
+                posY = Random.Range(rectY, rectHeight);
+
             }
             while (heights[posX, posY] < 30f/600f);
+    */        
+            posX = Random.Range(rectX, rectWidth);
+             
+            int posZ = Random.Range(rectY, rectHeight);
+            posY = (int)terrainData.GetHeight(posX*5, posZ*5); ;
+            //Vector3 position = new Vector3(posX, heights[posX, posY] * 600 + 5, posY);
+            Vector3 position = new Vector3(posX, posY, posZ);
+            HumanStatus humanStatus = new HumanStatus();
+            if ( StartHumanStatusList.Count > i )
+            {
+                Debug.logger.Log("humanstatus setting error");
+                humanStatus = StartHumanStatusList[i];
+            }
+            humanManager.Create( humanStatus, position );
+            //GameObject people = Instantiate(peoplePfb, new Vector3(posX, heights[posX, posY] * 600 + 5, posY),Quaternion.identity) as GameObject;
 
-            GameObject people = Instantiate(peoplePfb, new Vector3(posX, heights[posX, posY] * 600 + 5, posY),Quaternion.identity) as GameObject;
         }
     }
     public int treeNum = 3;
