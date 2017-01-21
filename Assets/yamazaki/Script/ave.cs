@@ -5,7 +5,6 @@ using UnityEngine;
 public class ave : MonoBehaviour {
 
     private Color _while_color = new Color(0,0,0,0);
-    private Vector3[] _vec = new Vector3[2];
     public List<Color> _color = new List<Color>();
     private bool _stay_flag = false;
 
