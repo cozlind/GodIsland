@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SearchCharacter : MonoBehaviour {
-    [HideInInspector]
+
     public GameObject aimHuman;
 
 	// Use this for initialization
@@ -18,15 +18,19 @@ public class SearchCharacter : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        Debug.Log("aaa");
         if (aimHuman == null && col.tag == "human")
         {
+            Debug.Log("( *´艸｀)");
             aimHuman = col.gameObject;
         }
+        /*
         if (col.tag == "human")
         {
             HumanMove humanMove = col.GetComponent<HumanMove>();
             humanMove.humanState = HumanMove.State.Attack;
             humanMove.aimEnemy = GameObject.Find("Black");
         }
+         * */
     }
 }

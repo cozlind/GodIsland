@@ -142,9 +142,12 @@ public class HumanMove : MonoBehaviour
 
     public void AttackUpdate()
     {
-        Vector3 relativePos = aimEnemy.transform.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
+        if (aimEnemy != null)
+        {
+            Vector3 relativePos = aimEnemy.transform.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(relativePos);
+            transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
+        }
 
         if (kamehameShot == true)
         {

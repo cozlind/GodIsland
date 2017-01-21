@@ -25,7 +25,7 @@ public class BlackGiant : MonoBehaviour
     void Start()
     {
         blackAnim = GetComponent<Animator>();
-        searchHumanArea = GameObject.Find("SearchRangeSphere");
+        searchHumanArea = GameObject.Find("BlackInSearchRangeSphere");
         //hp = GetComponent<GiantHP>();
     }
 
