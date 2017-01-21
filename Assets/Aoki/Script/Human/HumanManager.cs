@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HumanManager : MonoBehaviour, IHumanCreate {
+public class HumanManager : MonoBehaviour, IHumanCreate
+{
 
 
     public List<Human> _HumanList = new List<Human>();
@@ -35,7 +36,7 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
 
         Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
 
-        human.Init(status, FindNearColorMaterial( status.color ));
+        human.Init(status, FindNearColorMaterial(status.color));
         humanCreateCount++;
         _HumanList.Add(human);
     }
@@ -43,23 +44,24 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
     public void Create(HumanStatus humanStatus, Vector3 position)
     {
         HumanStatus status = humanStatus;
-       
+
         Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
         human.Init(status, FindNearColorMaterial(status.color));
         humanCreateCount++;
         _HumanList.Add(human);
     }
 
-    public Material FindNearColorMaterial( Color findColor)
+    public Material FindNearColorMaterial(Color findColor)
     {
         Material nearMaterial = _MaterialList[0];
         float minDiff = 10;
-        foreach( Material material in _MaterialList )
+        foreach (Material material in _MaterialList)
         {
             float diff = 0;
+            int a = ResultData.Instance.createHuman;
             Color color = material.GetColor("_Color");
             diff = Math.Abs(color.r - findColor.r) + Math.Abs(color.g - findColor.g) + Math.Abs(color.b - findColor.b);
-            if( diff < minDiff)
+            if (diff < minDiff)
             {
                 minDiff = diff;
                 nearMaterial = material;
@@ -70,29 +72,30 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         int division = 3;
 
-        for ( int r = 0; r < division; ++r )
+        for (int r = 0; r < division; ++r)
         {
-            for( int g = 0; g < division; ++g )
+            for (int g = 0; g < division; ++g)
             {
-                for( int b = 0; b < division; ++b )
+                for (int b = 0; b < division; ++b)
                 {
                     Material material = new Material(drawMaterial);
-                    Color color = new Color( r, g,b,1 ) / 4.0f;
+                    Color color = new Color(r, g, b, 1) / 4.0f;
                     material.SetColor("_Color", color);
-                    _MaterialList.Add( material );
+                    _MaterialList.Add(material);
                 }
             }
         }
-	}
-	
+    }
+
     public int GetHumanAliveCount()
     {
         return _HumanList.Count;
     }
-	
+
     public int GetHumanCreateCount()
     {
         return humanCreateCount;
