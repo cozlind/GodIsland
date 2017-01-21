@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GazePointMove : MonoBehaviour {
     public float speed = 8.0f;
-    private Vector3 screenPoint;
-    private Vector3 offset;
+    //private Vector3 screenPoint;
+    //private Vector3 offset;
+    GameObject camera;
+    Vector3 direction;
+    public float angle;
     float beforeX;
     float beforeY;
     float afterX;
@@ -14,16 +17,21 @@ public class GazePointMove : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        camera = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
     void Update()
     {
+        RightMouseClickMove();
+    }
+
+    void RightMouseClickMove()
+    {
         if (Input.GetMouseButtonDown(1))
         {
             //カメラから見たオブジェクトの現在位置を画面位置座標に変換
-            screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+            //screenPoint = Camera.main.WorldToScreenPoint(transform.position);
 
             //取得したscreenPointの値を変数に格納
             beforeX = Input.mousePosition.x;
@@ -35,7 +43,7 @@ public class GazePointMove : MonoBehaviour {
             //offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(x, y, screenPoint.z));
         }
 
-        if(Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1))
         {
             //ドラッグ時のマウス位置を変数に格納
             afterX = Input.mousePosition.x;
@@ -43,15 +51,16 @@ public class GazePointMove : MonoBehaviour {
 
             if (beforeX < afterX)
             {
-                transform.position += transform.right * speed * Time.deltaTime;
+                transform.position += camera.transform.right * speed * Time.deltaTime;
             }
             else if (beforeX > afterX)
             {
-                transform.position += transform.right * -speed * Time.deltaTime;
+                transform.position += camera.transform.right * -speed * Time.deltaTime;
             }
 
             if (beforeY < afterY)
             {
+
                 transform.position += transform.forward * speed * Time.deltaTime;
             }
             else if (beforeY > afterY)
