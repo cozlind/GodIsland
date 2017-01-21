@@ -71,6 +71,7 @@ public class BlackGiant : MonoBehaviour
 
     private void AttckUpdate()
     {
+        aimHuman = searchHumanArea.GetComponent<SearchCharacter>().aimHuman;
         Vector3 relativePos = aimHuman.transform.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
         transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
@@ -78,14 +79,6 @@ public class BlackGiant : MonoBehaviour
         if (aimHuman != null)
         {
             blackAnim.SetTrigger("attack");
-        }
-    }
-
-    void OnTriggerEnter(Collider col)
-    {
-        if (aimHuman == null && col.tag == "human")
-        {
-            aimHuman = col.gameObject;
         }
     }
 }
