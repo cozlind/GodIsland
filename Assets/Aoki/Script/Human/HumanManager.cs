@@ -5,14 +5,10 @@ using UnityEngine;
 
 public class HumanManager : MonoBehaviour, IHumanCreate {
 
-<<<<<<< HEAD
     public List<Human> _HumanList = new List<Human>();
-=======
-    List<Human> _HumanList = new List<Human>();
     List<Material> _MaterialList = new List<Material>();
     [SerializeField]
     Material drawMaterial;
->>>>>>> 3fa819f5900961c744e2a341aadd27c8009a8253
 
     [SerializeField]
     GameObject humanPrefab;
