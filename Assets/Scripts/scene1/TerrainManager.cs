@@ -114,6 +114,35 @@ public class TerrainManager : MonoBehaviour {
         }
     }
    
+    public void HeightUp( Vector2 mousePosition )
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if ( Physics.Raycast(ray, out hit) && hit.collider != null)
+        {
+            int pointY = (int)(hit.point.x * terrain.terrainData.heightmapWidth / terrain.terrainData.size.x);
+            int pointX = (int)(hit.point.z * terrain.terrainData.heightmapHeight / terrain.terrainData.size.z);
+
+            for (int i = -brushRadius; i <= brushRadius; i++)
+            {
+                for (int j = -brushRadius; j <= brushRadius; j++)
+                {
+                    float distance = Mathf.Sqrt(i * i + j * j);
+                    if (distance <= brushRadius)
+                    {
+                        if (pointX + i < 0 || pointX + i >= width || pointY + j < 0 || pointY + j >= height) continue;
+                        heights[pointX + i, pointY + j] += brushStrength * (brushRadius - distance) / brushRadius;
+                        AlphaMap(pointX + i, pointY + j);
+                    }
+                }
+            }
+            terrain.terrainData.SetHeights(0, 0, heights);
+            terrainData.SetAlphamaps(0, 0, splatmapData);
+        }
+    }
+
+
+
     void AlphaMap(int x,int y)
     {
         // Normalise x/y coordinates to range 0-1 
@@ -210,5 +239,19 @@ public class TerrainManager : MonoBehaviour {
         while (heights[posX, posY] < 30f / 600f);
 
         titan = Instantiate(titanPfb, new Vector3(posX, heights[posX, posY] * 600 + 5, posY), Quaternion.identity) as GameObject;
+    }
+
+    public Vector3 GetRandomTerrainHeightPosition()
+    {
+        Vector3 position = new Vector3();
+
+        int posX = Random.Range(width / 5, width * 4 / 5);
+        int posZ = Random.Range(height / 5, height * 4 / 5);
+        float posY = heights[posX, posZ] * 100 + 5;
+
+        position = new Vector3(posX * terrainData.size.x / width, posY, posZ * terrainData.size.z / height);
+
+
+        return position;
     }
 }

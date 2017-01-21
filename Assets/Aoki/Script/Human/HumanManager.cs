@@ -94,6 +94,29 @@ public class HumanManager : MonoBehaviour, IHumanCreate
         }
     }
 
+    void Update()
+    {
+        foreach( Human human in _HumanList )
+        {
+
+            if( Input.GetKeyDown(KeyCode.A) )
+            {
+                human.SetTargetPosition( GetRandomTarget() );
+            }
+            if( human.GetStatus().hp <= 0 )
+            {
+                //_HumanList.Remove(human);
+
+                //Destroy(human);
+            }
+        }
+    }
+
+    Vector3 GetRandomTarget()
+    {
+        return terrainManager.GetRandomTerrainHeightPosition();
+    }
+
     public int GetHumanAliveCount()
     {
         return _HumanList.Count;

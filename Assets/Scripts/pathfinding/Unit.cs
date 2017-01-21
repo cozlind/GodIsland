@@ -10,9 +10,27 @@ public class Unit : MonoBehaviour {
 	int targetIndex;
     Rigidbody rigidbody;
 
+    Vector3 prevPosition;
+    [SerializeField]
+    HumanModelCTRL modelCtrl;
+
 	void Start() {
         rigidbody = GetComponent<Rigidbody>();
+        prevPosition = transform.position;
         //PathRequestManager.RequestPath(transform.position,target.position, OnPathFound);
+    }
+    void Update()
+    {
+        Vector3 diff = transform.position - prevPosition;
+        diff.y = 0;
+        //if (diff.magnitude > 0.1f)
+        {
+            transform.rotation = Quaternion.LookRotation(diff);
+            
+        }
+        prevPosition = transform.position;
+        modelCtrl.SetSpeed(Mathf.Max((diff.magnitude / speed) / Time.deltaTime, 1));
+        
     }
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
@@ -45,10 +63,12 @@ public class Unit : MonoBehaviour {
 
             Ray ray = new Ray(transform.position,transform.forward - Vector3.up * 0.1f);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit,2))
+            if (Physics.Raycast(ray, out hit, 2))
             {
                 Debug.DrawRay(ray.origin, ray.direction);
-                rigidbody.velocity=((currentWaypoint - transform.position)*1.5f + Vector3.up*3);
+                rigidbody.velocity = ((currentWaypoint - transform.position) * 1.5f + Vector3.up * 3);
+           
+
             }
 
 
