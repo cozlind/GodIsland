@@ -31,6 +31,14 @@ ModelImporter:
     100046: Bip01 Spine3
     100048: //RootNode
     100050: Black
+    100052: Bip01 LIKTarget
+    100054: Bip01 RIKTarget
+    100056: Beam004
+    100058: Beam01
+    100060: Beam02
+    100062: Beam03
+    100064: BeamModel
+    100066: BeamRoot
     400000: Bip01
     400002: Bip01 Head
     400004: Bip01 L Clavicle
@@ -57,10 +65,23 @@ ModelImporter:
     400046: Bip01 Spine3
     400048: //RootNode
     400050: Black
+    400052: Bip01 LIKTarget
+    400054: Bip01 RIKTarget
+    400056: Beam004
+    400058: Beam01
+    400060: Beam02
+    400062: Beam03
+    400064: BeamModel
+    400066: BeamRoot
     4300000: Black
+    4300002: BeamModel
     7400000: Black_Idle
+    7400002: Black_Walk
+    7400004: Black_Beam
+    7400006: Black_Dead
     9500000: //RootNode
     13700000: Black
+    13700002: BeamModel
   materials:
     importMaterials: 1
     materialName: 0
@@ -166,6 +187,301 @@ ModelImporter:
         weight: 1
       - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
           R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand
+        weight: 1
+      - path: Bip01 RPT
+        weight: 1
+      - path: Black
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Black_Walk
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 190
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01 LIKTarget
+        weight: 1
+      - path: Bip01 LPT
+        weight: 1
+      - path: Bip01 PelvisBone01
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 L Thigh
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 L Thigh/Bip01 L Foot
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 R Thigh
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 R Thigh/Bip01 R Foot
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm/Bip01 L Forearm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head/Bip01 MouseL
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head/Bip01 MouseR
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm/Bip01 R Forearm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand
+        weight: 1
+      - path: Bip01 RIKTarget
+        weight: 1
+      - path: Bip01 RPT
+        weight: 1
+      - path: Black
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Black_Beam
+      takeName: Take 001
+      firstFrame: 200
+      lastFrame: 360
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.56113535
+        functionName: BeamShot
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01 LIKTarget
+        weight: 1
+      - path: Bip01 LPT
+        weight: 1
+      - path: Bip01 PelvisBone01
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 L Thigh
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 L Thigh/Bip01 L Foot
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 R Thigh
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 R Thigh/Bip01 R Foot
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm/Bip01 L Forearm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head/Bip01 MouseL
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head/Bip01 MouseR
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm/Bip01 R Forearm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand
+        weight: 1
+      - path: Bip01 RIKTarget
+        weight: 1
+      - path: Bip01 RPT
+        weight: 1
+      - path: Black
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Black_Dead
+      takeName: Take 001
+      firstFrame: 360
+      lastFrame: 420
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Bip01
+        weight: 1
+      - path: Bip01 LIKTarget
+        weight: 1
+      - path: Bip01 LPT
+        weight: 1
+      - path: Bip01 PelvisBone01
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 L Thigh
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 L Thigh/Bip01 L Foot
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 R Thigh
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 R Thigh/Bip01 R Foot
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm/Bip01 L Forearm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          L Clavicle/Bip01 L UpperArm/Bip01 L Forearm/Bip01 L Hand
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head/Bip01 MouseL
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          Neck/Bip01 Head/Bip01 MouseR
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm/Bip01 R Forearm
+        weight: 1
+      - path: Bip01 PelvisBone01/Bip01 Pelvis/Bip01 Spine1/Bip01 Spine2/Bip01 Spine3/Bip01
+          R Clavicle/Bip01 R UpperArm/Bip01 R Forearm/Bip01 R Hand
+        weight: 1
+      - path: Bip01 RIKTarget
         weight: 1
       - path: Bip01 RPT
         weight: 1
