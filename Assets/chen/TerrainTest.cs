@@ -12,14 +12,13 @@ public class TerrainTest : MonoBehaviour {
 
     void Start () {
         terrain = GetComponent<Terrain>();
+        terrainData = terrain.terrainData;
         width = terrain.terrainData.heightmapWidth;
         height = terrain.terrainData.heightmapHeight;
         heights = terrain.terrainData.GetHeights(0, 0, width, height);
 
 
 
-        // Get a reference to the terrain data
-        terrainData = terrain.terrainData;
         // Splatmap data is stored internally as a 3d array of floats, so declare a new empty array ready for your custom splatmap data:
         splatmapData = new float[terrainData.alphamapWidth, terrainData.alphamapHeight, terrainData.alphamapLayers];
 
@@ -30,9 +29,14 @@ public class TerrainTest : MonoBehaviour {
                 AlphaMap(x, y);
             }
         }
-
         // Finally assign the new splatmap to the terrainData:
         terrainData.SetAlphamaps(0, 0, splatmapData);
+
+
+
+
+        SpawnPeople();
+        SpawnTrees();
     }
     [Range(0,0.015f)]
     public float brushStrength = 0.05f;
@@ -91,7 +95,6 @@ public class TerrainTest : MonoBehaviour {
             terrain.terrainData.SetHeights(0, 0, heights);
             terrainData.SetAlphamaps(0, 0, splatmapData);
         }
-       // AddAlphaNoise(terrain, scale);
     }
    
     void AlphaMap(int x,int y)
@@ -144,6 +147,41 @@ public class TerrainTest : MonoBehaviour {
 
             // Assign this point to the splatmap array
             splatmapData[x, y, i] = splatWeights[i];
+        }
+    }
+
+    public int peopleNum = 3;
+    void SpawnPeople()
+    {
+        for (int i = 0; i< peopleNum; i++){
+            int posX, posY;
+            do
+            {
+                posX = Random.Range(1, width - 1);
+                posY = Random.Range(1, height - 1);
+            }
+            while (heights[posX, posY] < 20/600);
+
+            GameObject people = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            people.transform.position = new Vector3(posX, heights[posX, posY]*600+1, posY);
+            people.AddComponent<Rigidbody>();
+        }
+    }
+    public int treeNum = 3;
+    void SpawnTrees()
+    {
+        for (int i = 0; i < treeNum; i++)
+        {
+            int posX, posY;
+            do
+            {
+                posX = Random.Range(1, width - 1);
+                posY = Random.Range(1, height - 1);
+            }
+            while (heights[posX, posY] < 20 / 600);
+
+            GameObject tree = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            tree.transform.position = new Vector3(posX, heights[posX, posY] * 600+1, posY);
         }
     }
 }
