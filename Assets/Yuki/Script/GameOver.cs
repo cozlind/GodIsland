@@ -26,6 +26,10 @@ public class GameOver : MonoBehaviour {
         if (humanNum <= 0)
         {
             sceneLoadManager.enabled = true;
+            ResultData.Instance.createHuman = humanManager.GetHumanCreateCount();
+            ResultData.Instance.AliveHuman = humanManager.GetHumanAliveCount();
+
+            ResultData.Instance.deadHuman = humanManager.GetHumanCreateCount()- humanManager.GetHumanAliveCount();
         }
-	}
+    }
 }
