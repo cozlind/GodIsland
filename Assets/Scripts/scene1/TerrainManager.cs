@@ -184,7 +184,8 @@ public class TerrainManager : MonoBehaviour {
 
             }
             while (heights[posX, posY] < 30f/600f);
-    */        
+    */
+            int heightpersent = (int)( terrainData.heightmapWidth/ terrain.terrainData.size.x);
             posX = Random.Range(rectX, rectWidth);
              
             int posZ = Random.Range(rectY, rectHeight);
