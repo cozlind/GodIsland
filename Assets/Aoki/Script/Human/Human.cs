@@ -12,20 +12,20 @@ public class Human : MonoBehaviour {
     Renderer drawRenderer;
 
     //[SerializeField]
-    Color _currentColor = new Color();
+    //Color _currentColor = new Color();
 
     // Use this for initialization
-    public void Init(HumanStatus status)
+    public void Init(HumanStatus status, Material material)
     {
         _status = status;
-        _currentColor = _status.color;
+        //_currentColor = _status.color;
         Material m = drawRenderer.material;
-        m.SetColor("_Color", _status.color);
+        drawRenderer.material = material;
+        //m.SetColor("_Color", _status.color);
     }
 
     void Start()
     {
-        Init(_status);
     }
 
     public HumanStatus GetStatus()
@@ -35,17 +35,12 @@ public class Human : MonoBehaviour {
 
     public Color GetColor()
     {
-        return _currentColor;
+        return _status.color;
     }
 
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
-        _status.color = _currentColor;
 
-        Material m = drawRenderer.material;
-        m.SetColor("_Color", _status.color);
-#endif
     }
 }
