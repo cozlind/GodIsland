@@ -8,6 +8,7 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
 
     public List<Human> _HumanList = new List<Human>();
     List<Material> _MaterialList = new List<Material>();
+    int humanCreateCount = 0;
     [SerializeField]
     Material drawMaterial;
 
@@ -35,6 +36,7 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
         Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
 
         human.Init(status, FindNearColorMaterial( status.color ));
+        humanCreateCount++;
         _HumanList.Add(human);
     }
 
@@ -44,6 +46,7 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
        
         Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
         human.Init(status, FindNearColorMaterial(status.color));
+        humanCreateCount++;
         _HumanList.Add(human);
     }
 
@@ -85,8 +88,13 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
         }
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public int GetHumanAliveCount()
+    {
+        return _HumanList.Count;
+    }
+	
+    public int GetHumanCreateCount()
+    {
+        return humanCreateCount;
+    }
 }
