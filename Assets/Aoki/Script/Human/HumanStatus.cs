@@ -14,7 +14,6 @@ public struct HumanStatus  {
         attack = 1;
         CanBorn = false;
     }
-
     public Color color { get; set; }
     
     //public Material material { get; set; }

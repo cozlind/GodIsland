@@ -13,8 +13,8 @@ public class LoveWaveShot : MonoBehaviour {
     private GameObject player;
     private Vector3 shotPos;
 
-    [SerializeField]
-    HumanManager humanManager;
+    //[SerializeField]
+    // public IHumanCreate humanCreate { get; set; }
 
     void Start()
     {
@@ -79,7 +79,8 @@ public class LoveWaveShot : MonoBehaviour {
             }
 
             GameObject LoveShot = Instantiate(LoveWave, shotPos, transform.rotation);
-            LoveShot.GetComponent<LoveFieldManager>().HumanCreate = humanManager;
+            //LoveFieldManager love = LoveShot.GetComponent<LoveFieldManager>();
+            //love.HumanCreate = humanCreate ;
         }
     }
 }

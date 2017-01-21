@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Human : MonoBehaviour {
 
     [SerializeField]
     HumanStatus _status = new HumanStatus();
-    
+
+    [SerializeField]
+    Renderer drawRenderer;
+
+    [SerializeField]
     Color _currentColor = new Color();
 
     // Use this for initialization
@@ -14,7 +19,7 @@ public class Human : MonoBehaviour {
     {
         _status = status;
         _currentColor = _status.color;
-        Material m = GetComponent<MeshRenderer>().material;
+        Material m = drawRenderer.material;
         m.SetColor("_Color", _status.color);
     }
 
@@ -37,9 +42,9 @@ public class Human : MonoBehaviour {
     void Update()
     {
 #if UNITY_EDITOR
-        _currentColor = _status.color;
+        _status.color = _currentColor;
 
-        Material m = GetComponent<MeshRenderer>().material;
+        Material m = drawRenderer.material;
         m.SetColor("_Color", _status.color);
 #endif
     }
