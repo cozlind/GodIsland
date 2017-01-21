@@ -988,6 +988,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114370186691715956, guid: 3443963c4c6398a468a62894a23fcdff,
+        type: 2}
+      propertyPath: LoveWave
+      value: 
+      objectReference: {fileID: 1374025088444098, guid: 870f4834b340c3249b0a21f313a6ad01,
+        type: 2}
+    - target: {fileID: 114370186691715956, guid: 3443963c4c6398a468a62894a23fcdff,
+        type: 2}
+      propertyPath: LoveField
+      value: 
+      objectReference: {fileID: 1061162001767720, guid: def79658d70a90b4a9f6d3f589c97228,
+        type: 2}
+    - target: {fileID: 114833146699421382, guid: 3443963c4c6398a468a62894a23fcdff,
+        type: 2}
+      propertyPath: LoveField
+      value: 
+      objectReference: {fileID: 1061162001767720, guid: def79658d70a90b4a9f6d3f589c97228,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3443963c4c6398a468a62894a23fcdff, type: 2}
   m_IsPrefabParent: 0
