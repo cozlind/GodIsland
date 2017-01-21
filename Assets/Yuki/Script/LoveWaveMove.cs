@@ -33,7 +33,6 @@ public class LoveWaveMove : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        Debug.logger.Log( col.name );
         if (col.gameObject.tag == "Ground")
         {
             if (type == LoveType.Glow)

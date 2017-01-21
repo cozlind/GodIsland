@@ -67,7 +67,6 @@ public class HumanMove : MonoBehaviour
                 break;
         }
         ObjTagFind();
-        Debug.Log(humanState);
     }
 
     //人(Human)の動きの初期化
