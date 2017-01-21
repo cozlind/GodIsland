@@ -8,8 +8,10 @@ public class GiantHP : MonoBehaviour {
     private float deathAnimTime;
     bool death = false;
     Animator blackAnim;
+    AudioSource deadSE;
     SceneLoadManager loadResult;
     void Start () {
+        deadSE = GetComponent<AudioSource>();
         loadResult = GetComponent<SceneLoadManager>();
         deathAnimTime = 5;
         blackAnim = GetComponent<Animator>();
@@ -48,6 +50,7 @@ public class GiantHP : MonoBehaviour {
     void GodDeath()
     {
         blackAnim.SetBool("dead", true);
+        deadSE.Play();
         death = true;
     }
 }
