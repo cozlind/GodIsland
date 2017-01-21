@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class LoveWaveShot : MonoBehaviour {
@@ -39,6 +40,11 @@ public class LoveWaveShot : MonoBehaviour {
 
     void MouseClicks()
     {
+
+        if( EventSystem.current.currentSelectedGameObject != null )
+        {
+            return;
+        }
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0))
         {

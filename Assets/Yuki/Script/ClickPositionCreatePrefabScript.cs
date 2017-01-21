@@ -18,7 +18,7 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
     private GameObject LoveField;
     private Vector3 hitPoint;
 
-    LoveType type;
+    public LoveType type;
 
     void Start()
     {
