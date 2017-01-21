@@ -6,12 +6,15 @@ public class LoveWaveShot : MonoBehaviour {
     private float shotWait = 0;
     [SerializeField]
     private GameObject LoveField;
+
     [SerializeField]
     private GameObject LoveWave;
     [HideInInspector]
     public Vector3 hitPoint;
     private GameObject player;
     private Vector3 shotPos;
+
+    public LoveType type;
 
     //[SerializeField]
     // public IHumanCreate humanCreate { get; set; }
@@ -77,8 +80,18 @@ public class LoveWaveShot : MonoBehaviour {
             {
                 return;
             }
-
-            GameObject LoveShot = Instantiate(LoveWave, shotPos, transform.rotation);
+            if( type == LoveType.Love|| type == LoveType.Glow)
+            {
+                 GameObject LoveShot = Instantiate(LoveWave, shotPos, transform.rotation);
+                 LoveWaveMove love = LoveShot.GetComponent<LoveWaveMove>();
+                if( love != null )
+                {
+                    love.type = type;
+                }
+            }
+            
+            
+            
             //LoveFieldManager love = LoveShot.GetComponent<LoveFieldManager>();
             //love.HumanCreate = humanCreate ;
         }
