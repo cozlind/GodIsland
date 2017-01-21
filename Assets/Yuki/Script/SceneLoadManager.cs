@@ -4,6 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoadManager : MonoBehaviour {
+    public string sceneName = "Result";
+    void start(){
+        enabled = false;
+    }
+
+    void Update()
+    {
+        HumansCount();
+        SceneLoad(sceneName);
+    }
 
     public void SceneLoad(string name)
     {
