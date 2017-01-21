@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/End/bgm_boss_battle1.mp3.meta
 guid: 590257bf2ce1a3f409af7f475a7f3d5b
 timeCreated: 1484982671
+=======
+guid: 4caa6cd704dad3d44bd6373985715b15
+timeCreated: 1484983928
+>>>>>>> fd8533461da9f68d7fcb5685755bafd1d5f56fb4:Assets/End/bgm_boss_battle1.mp3.meta
 licenseType: Free
 AudioImporter:
   serializedVersion: 6

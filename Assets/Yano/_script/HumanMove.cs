@@ -37,7 +37,8 @@ public class HumanMove : MonoBehaviour
     void Start()
     {
         Initialize();
-        blackGiant = GameObject.Find("BlackGiant").GetComponent<BlackGiant>();
+        // blackGiant = GameObject.Find("Black").GetComponent<BlackGiant>();
+        blackGiant = GameObject.FindObjectOfType<BlackGiant>();
     }
 
     // Update is called once per frame
