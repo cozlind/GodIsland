@@ -4,6 +4,7 @@ using UnityEngine;
 
 // 構造体がＵｎｉｔｙ上で映るようにする
 [System.Serializable]
+// 人と巨人のステータスに使う予定
 public struct HumanStatus  {
 
     public HumanStatus( Color color )
