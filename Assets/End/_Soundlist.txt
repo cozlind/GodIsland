@@ -4,7 +4,8 @@
 title
 stage(基本プレイ時、戦闘が起こっていない時)
 boss_danger(黒に近い時　3DSoundを使ってボスとの距離で音量を変える)
-boss_battle(黒との戦闘時)
+boss_battle(黒との戦闘/DMC風)
+boss_battle2(黒との戦闘/ファルコム風)
 result
 
 ○ジングル
