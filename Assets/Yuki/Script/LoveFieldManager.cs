@@ -51,6 +51,7 @@ public class LoveFieldManager : MonoBehaviour {
             HumanStatus status2 = _ParentObjectList[i * 2 + 1].GetComponent<Human>().GetStatus();
             IHumanCreate humanCreate = GameObject.Find("HumanManager").GetComponent<HumanManager>();
             humanCreate.Create(status1, status2,position );
+            ResultManager.birthHumansNum++;
 
         }
     }

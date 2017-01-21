@@ -12,6 +12,10 @@ public class SceneLoadManager : MonoBehaviour {
 
     public void HumansCount()
     {
-        
+        GameObject[] humans = GameObject.FindGameObjectsWithTag("human");
+        foreach (GameObject obj in humans)
+        {
+            ResultManager.allHumansNum++;
+        }
     }
 }
