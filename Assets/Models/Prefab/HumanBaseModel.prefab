@@ -764,8 +764,13 @@ MonoBehaviour:
   fieldObj:
     serializedVersion: 2
     m_Bits: 8192
+  humanState: 0
   moveSpeed: 2
   rorateSpeed: 5
+  speed: 3
+  kamehameShot: 0
+  kamehameha: {fileID: 1836321204958984, guid: d9a50ea2a3dac62479d72dfe7d7cbaaf, type: 2}
+  aimEnemy: {fileID: 0}
 --- !u!114 &114465912560262224
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HumanMove : MonoBehaviour
 {
-    enum State
+    public enum State
     {
         Move,
         Rotation,
@@ -20,11 +20,10 @@ public class HumanMove : MonoBehaviour
     public LayerMask ground;
     public LayerMask fieldObj;
 
-    State humanState;
+    public State humanState;
 
     [SerializeField]
     private float moveSpeed;
-
     [SerializeField]
     private float rorateSpeed;
 
@@ -33,12 +32,20 @@ public class HumanMove : MonoBehaviour
     private int stayTime;
     private int randomTime;
 
+    public float speed = 3;
+    public bool kamehameShot = false;
+    public GameObject kamehameha;
+
+    public GameObject aimEnemy;
+    Animator humanAnim;
+
     // Use this for initialization
     void Start()
     {
         Initialize();
         // blackGiant = GameObject.Find("Black").GetComponent<BlackGiant>();
         blackGiant = GameObject.FindObjectOfType<BlackGiant>();
+        humanAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -62,6 +69,7 @@ public class HumanMove : MonoBehaviour
                 break;
 
             case State.Attack:
+                AttackUpdate();
                 //黒巨人がいた際の処理
                 //現在は止まる
                 break;
@@ -132,6 +140,19 @@ public class HumanMove : MonoBehaviour
         }
     }
 
+    public void AttackUpdate()
+    {
+        Vector3 relativePos = aimEnemy.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
+
+        if (kamehameShot == true)
+        {
+            humanAnim.Play("Human_Kamehameha", 0);
+
+        }
+    }
+
     //木が生成された時の更新処理
     public void TreeDiscoverUpdate()
     {
@@ -167,5 +188,20 @@ public class HumanMove : MonoBehaviour
             humanState = State.Rotation;
             Destroy(other.gameObject);
         }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.name == "Black")
+        {
+            humanState = State.Attack;
+            aimEnemy = col.gameObject;
+        }
+    }
+
+    public void Kamehameha()
+    {
+        Instantiate(kamehameha, transform.position + new Vector3(-0.313f, 0.646f, 0.314f), transform.rotation);
+        
     }
 }

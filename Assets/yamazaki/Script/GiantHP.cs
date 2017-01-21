@@ -32,25 +32,30 @@ public class GiantHP : MonoBehaviour {
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.name == "Ball(Clone)")
+        if (c.name == "Kamehame_Root(Clone)")
         {
             //ビームのダメージ
-            if (HP > 0) HP -= Beam;
+            //if (HP > 0) HP -= Beam;
             if (HP <= 0) GodDeath();
             Destroy(c.gameObject);
         }
         if (c.CompareTag("human"))
         {
             //体当たりのダメージ
-            if (HP > 0) HP -= BodyBlow;
+            //if (HP > 0) HP -= BodyBlow;
             if (HP <= 0) GodDeath();
         }
     }
 
     void GodDeath()
     {
-        blackAnim.SetBool("dead", true);
+        blackAnim.Play("Black_Dead", 0);
         deadSE.Play();
         death = true;
+    }
+
+    public void damage(int damage)
+    {
+        HP -= damage;
     }
 }

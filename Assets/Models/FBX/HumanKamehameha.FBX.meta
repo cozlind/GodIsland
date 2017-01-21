@@ -97,7 +97,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.6723919
+        functionName: Kamehameha
+        data: 
+        objectReferenceParameter: {fileID: 1836321204958984, guid: d9a50ea2a3dac62479d72dfe7d7cbaaf,
+          type: 2}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
