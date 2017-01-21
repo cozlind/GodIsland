@@ -171,7 +171,6 @@ public class TerrainManager : MonoBehaviour {
     void SpawnPeople()
     {
         for (int i = 0; i< peopleNum; i++){
-            int posX, posY;
             int rectX = (int)terrain.terrainData.size.x / 4;
             int rectY = (int)terrain.terrainData.size.y / 4;
 
@@ -188,11 +187,9 @@ public class TerrainManager : MonoBehaviour {
             }
             while (heights[posX, posY] < 30f/600f);
     */
-            int heightpersent = (int)( terrainData.heightmapWidth/ terrain.terrainData.size.x);
-            posX = Random.Range(rectX, rectWidth);
-             
-            int posZ = Random.Range(rectY, rectHeight);
-            posY = (int)terrainData.GetHeight(posX*5, posZ*5); ;
+            int posX = Random.Range(rectX, rectX+rectWidth);
+            int posZ = Random.Range(rectY, rectY+rectHeight);
+            float posY = heights[posX, posZ] * 100 + 5;
             //Vector3 position = new Vector3(posX, heights[posX, posY] * 600 + 5, posY);
             Vector3 position = new Vector3(posX, posY, posZ);
             HumanStatus humanStatus = new HumanStatus();
@@ -211,15 +208,22 @@ public class TerrainManager : MonoBehaviour {
     {
         for (int i = 0; i < treeNum; i++)
         {
-            int posX, posY;
-            do
-            {
-                posX = Random.Range(width / 2 - 80, width / 2 + 80);
-                posY = Random.Range(height / 2 - 80, height / 2 + 80);
-            }
-            while (heights[posX, posY] < 30f / 600f);
+            int rectX = (int)terrain.terrainData.size.x / 4;
+            int rectY = (int)terrain.terrainData.size.y / 4;
+            int rectWidth = (int)terrain.terrainData.size.x / 2;
+            int rectHeight = (int)terrain.terrainData.size.y / 2;
 
-            GameObject tree = Instantiate(treePfb, new Vector3(posX, heights[posX, posY] * 600+5 , posY), Quaternion.identity) as GameObject;
+            int posX = Random.Range(rectX, rectX + rectWidth);
+            int posZ = Random.Range(rectY, rectY + rectHeight);
+
+            //do
+            //{
+            //    posX = Random.Range(width / 2 - 80, width / 2 + 80);
+            //    posY = Random.Range(height / 2 - 80, height / 2 + 80);
+            //}
+            //while (heights[posX, posY] < 30f / 600f);
+
+            GameObject tree = Instantiate(treePfb, new Vector3(posX, heights[posX, posZ] * 100+5 , posZ), Quaternion.identity) as GameObject;
         }
     }
     void SpawnTitan()
