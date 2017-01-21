@@ -43,13 +43,15 @@ public class LoveFieldManager : MonoBehaviour {
             {
                 break;
             }
-            float randomPos = Random.Range(-scale / 2, scale / 2);
-            Vector3 position = new Vector3(transform.position.x + randomPos, transform.position.y + 3, transform.position.z + randomPos);
+            float randomPosX = Random.Range(-scale / 2, scale / 2);
+            float randomPosZ = Random.Range(-scale / 2, scale / 2);
+            Vector3 position = new Vector3(transform.position.x + randomPosX, transform.position.y + 3, transform.position.z + randomPosZ);
             // Instantiate(human, new Vector3(transform.position.x + randomPos, transform.position.y + 3, transform.position.z + randomPos), transform.rotation);
             HumanStatus status1 = _ParentObjectList[i * 2].GetComponent<Human>().GetStatus();
             HumanStatus status2 = _ParentObjectList[i * 2 + 1].GetComponent<Human>().GetStatus();
             IHumanCreate humanCreate = GameObject.Find("HumanManager").GetComponent<HumanManager>();
             humanCreate.Create(status1, status2,position );
+            ResultManager.birthHumansNum++;
 
         }
     }

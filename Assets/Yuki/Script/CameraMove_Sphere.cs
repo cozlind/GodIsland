@@ -10,16 +10,16 @@ public class CameraMove_Sphere : MonoBehaviour {
     public float rotateSpeed = 30;
     public float minYPos = 1.0f;
     private Vector3 mousePos;
-    //private float screenWidth;
-    //private float screenHeight;
-    public float gazeMoveRange = 30;
+    private float screenWidth;
+    private float screenHeight;
+    public float gazeMoveRange = 100;
     private Vector3 targetPos;
 
     void Start()
     {
         targetPos = gazeObj.transform.position;
-        //screenWidth = Screen.width;
-        //screenHeight = Screen.height;
+        screenWidth = Screen.width;
+        screenHeight = Screen.height;
         UpdatePosition();
     }
 
@@ -36,20 +36,27 @@ public class CameraMove_Sphere : MonoBehaviour {
 
     void CameraMove()
     {
-        /*
         mousePos = Input.mousePosition;
 
-        if (mousePos.x <= gazeMoveRange)
+        if (mousePos.x <= gazeMoveRange && transform.position.y != 10)
         {
-            gazeObj.transform.position += transform.right * -speed * Time.deltaTime;
+            gazeObj.transform.eulerAngles += new Vector3(0, rotateSpeed * Time.deltaTime, 0);
         }
-        else if (mousePos.x >= screenWidth - gazeMoveRange)
+        else if (mousePos.x >= screenWidth - gazeMoveRange && transform.position.y != 10)
         {
-            gazeObj.transform.position += transform.right * speed * Time.deltaTime;
+            gazeObj.transform.eulerAngles += new Vector3(0, -rotateSpeed * Time.deltaTime, 0);
         }
-        */
+        if (mousePos.y >= screenHeight - gazeMoveRange && transform.rotation.eulerAngles.x < 80)
+        {
+            transform.position += transform.up * speed * Time.deltaTime;
+        }
+        else if (mousePos.y <= gazeMoveRange && transform.position.y > minYPos)
+        {
+            transform.position += transform.up * -speed * Time.deltaTime;
+        }
+        
 
-        if (Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Vertical") > 0 &&  transform.rotation.eulerAngles.x < 80)
         {
             transform.position += transform.up * speed * Time.deltaTime;
         }
@@ -58,21 +65,31 @@ public class CameraMove_Sphere : MonoBehaviour {
             transform.position += transform.up * -speed * Time.deltaTime;
         }
 
-        if (Input.GetAxis("Horizontal") > 0)
+        if (Input.GetAxis("Horizontal") > 0 && transform.position.y != 10)
         {
             gazeObj.transform.eulerAngles += new Vector3(0, rotateSpeed * Time.deltaTime, 0);
         }
-        if (Input.GetAxis("Horizontal") < 0)
+        if (Input.GetAxis("Horizontal") < 0 && transform.position.y != 10)
         {
             gazeObj.transform.eulerAngles += new Vector3(0, -rotateSpeed * Time.deltaTime, 0);
         }
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (Vector3.Distance(targetPos, transform.position) > minDistance && scroll > 0)
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, minDistance))
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
+
         }
-        else if (Vector3.Distance(targetPos, transform.position) < maxDistance && scroll < 0)
+        else 
+        {
+            if (scroll > 0)
+            {
+                transform.position += transform.forward * speed * Time.deltaTime;
+            }
+        }
+
+        if (Vector3.Distance(targetPos, transform.position) < maxDistance && scroll < 0)
         {
             transform.position += transform.forward * -speed * Time.deltaTime;
         }
