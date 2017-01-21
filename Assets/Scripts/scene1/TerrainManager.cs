@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TerrainTest : MonoBehaviour {
+public class TerrainManager : MonoBehaviour {
 
     Terrain terrain;
     TerrainData terrainData;
