@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ClickPositionCreatePrefabScript : MonoBehaviour {
     private float shotWait = 0;
-    public float speed = 3000.0f;
     [SerializeField]
-    private GameObject Prefab;
-    public Vector3 hitPoint;
+    private GameObject LoveField;
+    private Vector3 hitPoint;
 
     void Start()
     {
@@ -62,7 +61,7 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
             {
                 return;
             }
-            Instantiate(Prefab, hitPoint, transform.rotation);
+            Instantiate(LoveField, hitPoint, transform.rotation);
         }
     }
 }

@@ -44,7 +44,7 @@ public class LoveFieldManager : MonoBehaviour {
 
         if (countFinished == false)
         {
-            GameObject[] targets = GameObject.FindGameObjectsWithTag("Human");
+            GameObject[] targets = GameObject.FindGameObjectsWithTag("human");
             foreach (GameObject obj in targets)
             {
                 float dist = Vector3.Distance(obj.transform.position, transform.position);
