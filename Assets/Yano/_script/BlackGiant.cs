@@ -12,7 +12,7 @@ public class BlackGiant : MonoBehaviour
     }
     public Type bg_type = Type.Sleep;
 
-    GiantHP hp;
+    //GiantHP hp;
 
     float sleepTime = 0;
 
@@ -21,7 +21,7 @@ public class BlackGiant : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        hp = GameObject.Find("Black").GetComponent<GiantHP>();
+        //hp = GetComponent<GiantHP>();
     }
 
     // Update is called once per frame
@@ -55,10 +55,12 @@ public class BlackGiant : MonoBehaviour
     {
         if (readyTime == 60)
             bg_type = Type.Attack;
+
         readyTime+= Time.deltaTime;
     }
 
     private void AttckUpdate()
     {
+
     } 
 }
