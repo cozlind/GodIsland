@@ -11,7 +11,7 @@ public class Human : MonoBehaviour {
     [SerializeField]
     Renderer drawRenderer;
 
-    [SerializeField]
+    //[SerializeField]
     Color _currentColor = new Color();
 
     // Use this for initialization

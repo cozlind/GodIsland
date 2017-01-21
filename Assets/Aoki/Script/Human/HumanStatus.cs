@@ -9,17 +9,29 @@ public struct HumanStatus  {
 
     public HumanStatus( Color color )
     {
-        this.color = color;
+        _Color= color;
         hp = 1;
         attack = 1;
         CanBorn = false;
+        
     }
-    public Color color { get; set; }
+    public Color color {
+        get
+        {
+            return _Color;
+        }
+        set
+        {
+            _Color = value;
+        }
+    }
     
     //public Material material { get; set; }
 
     public float hp { get; set; }
     public float attack { get; set; }
     public bool CanBorn { get; set; }
+    [SerializeField]
+    private Color _Color;
 
 }
