@@ -9,10 +9,13 @@ public class HumanMove : MonoBehaviour
         Move,
         Rotation,
         Tree_discover,
+        Attack,
     }
 
     [SerializeField]
     private GameObject treeObj;
+
+    private BlackGiant blackGiant;
 
     public LayerMask ground;
     public LayerMask fieldObj;
@@ -34,6 +37,7 @@ public class HumanMove : MonoBehaviour
     void Start()
     {
         Initialize();
+        blackGiant = GameObject.Find("BlackGiant").GetComponent<BlackGiant>();
     }
 
     // Update is called once per frame
@@ -55,9 +59,13 @@ public class HumanMove : MonoBehaviour
                 TreeDiscoverUpdate();
 
                 break;
-        }
 
-        TreeDiscover();
+            case State.Attack:
+                //黒巨人がいた際の処理
+                //現在は止まる
+                break;
+        }
+        ObjTagFind();
     }
 
     //人(Human)の動きの初期化
@@ -71,7 +79,6 @@ public class HumanMove : MonoBehaviour
         moveTime = 0;
         rotateTime = 0;
         stayTime = (int)Random.Range(60f, 120f);
-
         randomTime = (int)Random.Range(60f, 180f + 1);
     }
 
@@ -112,23 +119,15 @@ public class HumanMove : MonoBehaviour
     public void RotationUpdate()
     {
         rotateTime++;
+
         transform.Rotate(Vector3.up, rorateSpeed * Time.deltaTime);
 
         if (rotateTime >= stayTime)
         {
+            moveSpeed = 2f;
             moveTime = 0;
             randomTime = (int)Random.Range(60f, 180f + 1);
             humanState = State.Move;
-        }
-    }
-
-    //木があるか調べる
-    public void TreeDiscover()
-    {
-        if (GameObject.FindGameObjectWithTag("tree") != null)
-        {
-            treeObj = GameObject.FindGameObjectWithTag("tree").gameObject;
-            humanState = State.Tree_discover;
         }
     }
 
@@ -138,7 +137,23 @@ public class HumanMove : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("tree") != null)
         {
             transform.LookAt(treeObj.transform.position);
-            this.transform.position += treeObj.transform.position * 0.01f; ;
+            transform.Translate(Vector3.forward * (moveSpeed + 2f) * Time.deltaTime);
+        }
+    }
+
+    //オブジェクトをタグ検索
+    public void ObjTagFind()
+    {
+        if (blackGiant.bg_type==BlackGiant.Type.Attack)
+        {
+            humanState = State.Attack;
+            return;
+        }
+
+        else if (GameObject.FindGameObjectWithTag("tree") != null)
+        {
+            treeObj = GameObject.FindGameObjectWithTag("tree").gameObject;
+            humanState = State.Tree_discover;
         }
     }
 
@@ -146,6 +161,8 @@ public class HumanMove : MonoBehaviour
     {
         if (other.gameObject.tag == "tree")
         {
+            rotateTime = 0;
+            stayTime = (int)Random.Range(60f, 180f + 1);
             humanState = State.Rotation;
             Destroy(other.gameObject);
         }
