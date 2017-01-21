@@ -14,13 +14,18 @@ public class BlackGiant : MonoBehaviour
 
     //GiantHP hp;
 
-    float sleepTime = 0;
+    public float speed = 0.5f;
+    public float sleepTime = 0;
+    public float readyTime = 0;
+    public GameObject searchHumanArea;
+    public GameObject aimHuman;
 
-    float readyTime = 0;
-
+    Animator blackAnim;
     // Use this for initialization
     void Start()
     {
+        blackAnim = GetComponent<Animator>();
+        searchHumanArea = GameObject.Find("SearchRangeSphere");
         //hp = GetComponent<GiantHP>();
     }
 
@@ -46,21 +51,41 @@ public class BlackGiant : MonoBehaviour
 
     private void SleepUpdate()
     {
-        if (sleepTime == 120)
+        if (sleepTime >= 3)
+        {
+            blackAnim.SetBool("ready", true);
             bg_type = Type.Ready;
+        }
         sleepTime+= Time.deltaTime;
     }
 
     private void ReadyUpdate()
     {
-        if (readyTime == 60)
+        if (readyTime >= 3)
+        {
+            blackAnim.SetBool("attack", true);
             bg_type = Type.Attack;
-
+        }
         readyTime+= Time.deltaTime;
     }
 
     private void AttckUpdate()
     {
+        Vector3 relativePos = aimHuman.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+        transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
 
-    } 
+        if (aimHuman != null)
+        {
+            blackAnim.SetTrigger("attack");
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (aimHuman == null && col.tag == "human")
+        {
+            aimHuman = col.gameObject;
+        }
+    }
 }
