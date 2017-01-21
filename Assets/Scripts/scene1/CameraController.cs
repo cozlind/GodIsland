@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
     float zoomSpeed = 1000;
     void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * 20);
         if (Input.mouseScrollDelta.y != 0)
         {
             float step = zoomSpeed * Time.deltaTime;

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ce579956f53fb8b44a01f4c51ed860ed
-timeCreated: 1485014712
+timeCreated: 1485016376
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -12,6 +12,8 @@ TextureImporter:
     21300010: UI_Lose
     21300012: UI_WindowB
     21300014: UI_WindowW
+    21300016: click to start
+    21300018: UI_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -116,7 +118,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1370
-        y: 1749
+        y: 1751
         width: 578
         height: 111
       alignment: 0
@@ -187,6 +189,32 @@ TextureImporter:
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 70, y: 70, z: 70, w: 70}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: click to start
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 1743
+        width: 610
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: UI_0
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 1883
+        width: 606
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     outline: []

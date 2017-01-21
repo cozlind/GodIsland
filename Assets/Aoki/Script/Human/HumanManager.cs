@@ -12,8 +12,8 @@ public class HumanManager : MonoBehaviour, IHumanCreate
     int humanCreateCount = 0;
     [SerializeField]
     Material drawMaterial;
-
-
+    [SerializeField]
+    TerrainManager terrainManager;
     [SerializeField]
     GameObject humanPrefab;
 
@@ -34,8 +34,9 @@ public class HumanManager : MonoBehaviour, IHumanCreate
         status.attack = Mathf.Lerp(_minAttack, _maxAttack, HumanStatusAlgorithm.GetBornHpPersent(status.color));
         status.hp = Mathf.Lerp(_minHp, _maxHp, HumanStatusAlgorithm.GetAttackPersent(status.color));
 
-        Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
-
+        Human human = Instantiate(humanPrefab, humanPrefab.transform.position, Quaternion.identity, this.transform).GetComponent<Human>();
+        human.GetComponent<DynamicPathFinding>().unitScript.transform.position = position;
+        human.GetComponent<DynamicPathFinding>().terrainScript = terrainManager;
         human.Init(status, FindNearColorMaterial(status.color));
         humanCreateCount++;
         _HumanList.Add(human);
@@ -45,8 +46,10 @@ public class HumanManager : MonoBehaviour, IHumanCreate
     {
         HumanStatus status = humanStatus;
 
-        Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
+        Human human = Instantiate(humanPrefab, humanPrefab.transform.position, Quaternion.identity, this.transform).GetComponent<Human>();
         human.Init(status, FindNearColorMaterial(status.color));
+        human.GetComponent<DynamicPathFinding>().unitScript.transform.position = position;
+        human.GetComponent<DynamicPathFinding>().terrainScript = terrainManager;
         humanCreateCount++;
         _HumanList.Add(human);
     }
