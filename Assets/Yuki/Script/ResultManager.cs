@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResultManager : MonoBehaviour {
-    static public int allHumanNum;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
+    static public int allHumansNum;
+    static public int deadHumansNum;
+    static public int birthHumansNum;
 
     void CountAllhumans()
     {
         GameObject[] humans = GameObject.FindGameObjectsWithTag("human");
         foreach (GameObject obj in humans)
         {
-            allHumanNum++;
+            allHumansNum++;
         }
     }
 
