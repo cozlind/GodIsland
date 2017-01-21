@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum  LoveType
+{
+    Love,
+    Broke,
+    Create,
+    Glow,
+}
+
+
+
 public class ClickPositionCreatePrefabScript : MonoBehaviour {
     private float shotWait = 0;
     [SerializeField]
     private GameObject LoveField;
     private Vector3 hitPoint;
+
+    public LoveType type;
 
     void Start()
     {
@@ -61,7 +73,12 @@ public class ClickPositionCreatePrefabScript : MonoBehaviour {
             {
                 return;
             }
-            Instantiate(LoveField, hitPoint, transform.rotation);
+            GameObject obj = Instantiate(LoveField, hitPoint, transform.rotation);
+            LoveWaveShot shot = obj.GetComponent<LoveWaveShot>();
+            if( shot != null )
+            {
+                shot.type = this.type;
+            }
         }
     }
 }

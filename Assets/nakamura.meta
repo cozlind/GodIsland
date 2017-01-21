@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/nakamura.meta
+guid: 548b52208dccc6842b5a09e2a5410929
+folderAsset: yes
+timeCreated: 1485007962
+=======
 guid: 9368295cfec561641a7a9fa6bc7e0a41
 folderAsset: yes
 timeCreated: 1484968531
+>>>>>>> 3fa819f5900961c744e2a341aadd27c8009a8253:Assets/nakamura.meta
 licenseType: Free
 DefaultImporter:
   userData: 

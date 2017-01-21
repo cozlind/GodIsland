@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class HumanManager : MonoBehaviour, IHumanCreate {
 
-    List<Human> _HumanList = new List<Human>();
+
+    public List<Human> _HumanList = new List<Human>();
+    List<Material> _MaterialList = new List<Material>();
+    [SerializeField]
+    Material drawMaterial;
+
 
     [SerializeField]
     GameObject humanPrefab;
@@ -28,7 +33,8 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
         status.hp = Mathf.Lerp(_minHp, _maxHp, HumanStatusAlgorithm.GetAttackPersent(status.color));
 
         Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
-        human.Init(status);
+
+        human.Init(status, FindNearColorMaterial( status.color ));
         _HumanList.Add(human);
     }
 
@@ -37,13 +43,46 @@ public class HumanManager : MonoBehaviour, IHumanCreate {
         HumanStatus status = humanStatus;
        
         Human human = Instantiate(humanPrefab, position, Quaternion.identity, this.transform).GetComponent<Human>();
-        human.Init(status);
+        human.Init(status, FindNearColorMaterial(status.color));
         _HumanList.Add(human);
+    }
+
+    public Material FindNearColorMaterial( Color findColor)
+    {
+        Material nearMaterial = _MaterialList[0];
+        float minDiff = 10;
+        foreach( Material material in _MaterialList )
+        {
+            float diff = 0;
+            Color color = material.GetColor("_Color");
+            diff = Math.Abs(color.r - findColor.r) + Math.Abs(color.g - findColor.g) + Math.Abs(color.b - findColor.b);
+            if( diff < minDiff)
+            {
+                minDiff = diff;
+                nearMaterial = material;
+            }
+
+        }
+        return nearMaterial;
     }
 
     // Use this for initialization
     void Start () {
-		
+        int division = 3;
+
+        for ( int r = 0; r < division; ++r )
+        {
+            for( int g = 0; g < division; ++g )
+            {
+                for( int b = 0; b < division; ++b )
+                {
+                    Material material = new Material(drawMaterial);
+                    Color color = new Color( r, g,b,1 ) / 4.0f;
+                    material.SetColor("_Color", color);
+                    _MaterialList.Add( material );
+                }
+            }
+        }
 	}
 	
 	// Update is called once per frame

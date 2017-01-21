@@ -108,7 +108,7 @@ public class HumanMove : MonoBehaviour
         Ray ray_low = new Ray(transform.localPosition+new Vector3(0f,0.5f,0f) + transform.forward, -transform.up);
         //Debug.DrawRay(ray_low.origin, ray_low.direction, Color.red);
         RaycastHit hitInfo_low;
-        if (Physics.Raycast(ray_low, out hitInfo_low, 1f,ground))
+        //if (Physics.Raycast(ray_low, out hitInfo_low, 1f,ground))
         {
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
@@ -122,10 +122,10 @@ public class HumanMove : MonoBehaviour
         rotateTime++;
 
         transform.Rotate(Vector3.up, rorateSpeed * Time.deltaTime);
-
+        
         if (rotateTime >= stayTime)
         {
-            moveSpeed = 2f;
+            moveSpeed = 2;
             moveTime = 0;
             randomTime = (int)Random.Range(60f, 360f + 1);
             humanState = State.Move;

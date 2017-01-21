@@ -5,6 +5,30 @@ using UnityEngine;
 public class GiantHP : MonoBehaviour {
 
     public int HP, Beam, BodyBlow;
+    private float deathAnimTime;
+    bool death = false;
+    Animator blackAnim;
+    AudioSource deadSE;
+    SceneLoadManager loadResult;
+    void Start () {
+        deadSE = GetComponent<AudioSource>();
+        loadResult = GetComponent<SceneLoadManager>();
+        deathAnimTime = 5;
+        blackAnim = GetComponent<Animator>();
+    }
+
+    void Update()
+    {
+        if (death == true)
+        {
+            deathAnimTime -= Time.deltaTime;
+
+            if (deathAnimTime <= 0)
+            {
+                loadResult.enabled = true;
+            }
+        }
+    }
 
     void OnTriggerEnter(Collider c)
     {
@@ -12,19 +36,21 @@ public class GiantHP : MonoBehaviour {
         {
             //ビームのダメージ
             if (HP > 0) HP -= Beam;
-            else if (HP <= 0) GodDeath();
+            if (HP <= 0) GodDeath();
             Destroy(c.gameObject);
         }
         if (c.CompareTag("human"))
         {
             //体当たりのダメージ
             if (HP > 0) HP -= BodyBlow;
-            else if (HP <= 0) GodDeath();
+            if (HP <= 0) GodDeath();
         }
     }
 
-    private void GodDeath()
+    void GodDeath()
     {
-        Debug.Log("巨人は死んだ");
+        blackAnim.SetBool("dead", true);
+        deadSE.Play();
+        death = true;
     }
 }
