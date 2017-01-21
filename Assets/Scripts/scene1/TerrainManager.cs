@@ -46,7 +46,7 @@ public class TerrainManager : MonoBehaviour {
 
 
         SpawnPeople();
-        SpawnTrees();
+        //SpawnTrees();
         //SpawnTitan();
         if( titan == null )
         {
