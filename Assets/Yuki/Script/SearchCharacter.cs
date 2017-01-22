@@ -22,13 +22,13 @@ public class SearchCharacter : MonoBehaviour {
         {
             aimHuman = col.gameObject;
         }
-        /*
+        
         if (col.tag == "human")
         {
-            HumanMove humanMove = col.GetComponent<HumanMove>();
-            humanMove.humanState = HumanMove.State.Attack;
-            humanMove.aimEnemy = GameObject.Find("Black");
+            Unit unit = col.GetComponent<Unit>();
+            unit.buttle = true;
+            unit.aimEnemy = GameObject.Find("Black");
         }
-         * */
+         
     }
 }
