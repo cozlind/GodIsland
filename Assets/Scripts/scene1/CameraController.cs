@@ -4,16 +4,33 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
+    public float minDistance = 10;
     Vector3 offset;
     Vector3 PreMouseMPos;
     float zoomSpeed = 1000;
     void Update()
     {
+        if (transform.position.y <= 0)
+        {
+            transform.position += new Vector3(0, -transform.position.y, 0);
+        }
+
         if (Input.mouseScrollDelta.y != 0)
         {
             float step = zoomSpeed * Time.deltaTime;
-            transform.Translate(transform.forward * step * Input.GetAxis("Mouse ScrollWheel"), Space.World);
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, minDistance))
+            {
+
+            }
+            else
+            {
+                if (Input.GetAxis("Mouse ScrollWheel") > 0) transform.Translate(transform.forward * step * Input.GetAxis("Mouse ScrollWheel"), Space.World);
+            }
+            if (Input.GetAxis("Mouse ScrollWheel") < 0) transform.Translate(transform.forward * step * Input.GetAxis("Mouse ScrollWheel"), Space.World);
+
+
         }
         if (Input.GetMouseButton(1))
         {
