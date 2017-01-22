@@ -25,9 +25,9 @@ public class SearchCharacter : MonoBehaviour {
         
         if (col.tag == "human")
         {
-            Unit unit = col.GetComponent<Unit>();
-            unit.buttle = true;
-            unit.aimEnemy = GameObject.Find("Black");
+            HumanAttackCtrl humanAttackCtrl = col.transform.FindChild("HumanBaseModel").GetComponent<HumanAttackCtrl>();
+            humanAttackCtrl.buttle = true;
+            humanAttackCtrl.aimEnemy = GameObject.Find("Black");
         }
          
     }
