@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 114550207111340816}
   m_Layer: 0
   m_Name: AStar_Human
-  m_TagString: human
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 114279706772129928}
   m_Layer: 2
   m_Name: HumanBaseModel
-  m_TagString: human
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -759,7 +759,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270133619563046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.200001, y: 2, z: -44.300003}
+  m_LocalPosition: {x: -9.200001, y: 2.96, z: 7.8}
   m_LocalScale: {x: 2.2195635, y: 2.2195642, z: 2.2195642}
   m_Children: []
   m_Father: {fileID: 4275589448444016}
@@ -817,7 +817,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270133619563046}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1

@@ -16,12 +16,10 @@ public class SearchCharacter : MonoBehaviour {
 		
 	}
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
-        Debug.Log("aaa");
         if (aimHuman == null && col.tag == "human")
         {
-            Debug.Log("( *´艸｀)");
             aimHuman = col.gameObject;
         }
         /*
