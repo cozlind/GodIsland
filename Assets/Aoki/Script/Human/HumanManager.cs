@@ -116,6 +116,7 @@ public class HumanManager : MonoBehaviour, IHumanCreate
                 {
                     human.SetTree(obj);
                     human.SetTargetPosition(obj.transform.position);
+
                 }
             }
             if( human.GetStatus().hp <= 0 )

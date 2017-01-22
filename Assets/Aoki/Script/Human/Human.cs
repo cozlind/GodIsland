@@ -28,6 +28,11 @@ public class Human : MonoBehaviour {
         drawRenderer.material = material;
         //m.SetColor("_Color", _status.color);
     }
+    void Start()
+    {
+
+        transform.GetComponent<Grid>().RootFindStart();
+    }
 
     public bool IsTree()
     {
@@ -52,6 +57,7 @@ public class Human : MonoBehaviour {
     public void SetTargetPosition(Vector3 targetPosition)
     {
         unit.target.position = targetPosition;
+        transform.GetComponent<Grid>().RootFindStart();
     }
 
  

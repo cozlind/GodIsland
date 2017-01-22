@@ -35,6 +35,10 @@ public class Grid : MonoBehaviour {
 
 		CreateGrid();
 	}
+    public void RootFindStart()
+    {
+        dynamicPathFinding.DynamicAStar();
+    }
 
 	public int MaxSize {
 		get {

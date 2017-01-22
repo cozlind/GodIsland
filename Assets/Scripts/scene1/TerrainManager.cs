@@ -52,8 +52,8 @@ public class TerrainManager : MonoBehaviour {
         {
             titan = GameObject.FindObjectOfType<BlackGiant>().gameObject;
         }
-        camera.transform.position=new Vector3(titan.transform.position.x+8, titan.transform.position.y +10, titan.transform.position.z + 8);
-        camera.LookAt(titan.transform);
+        //camera.transform.position=new Vector3(titan.transform.position.x+8, titan.transform.position.y +10, titan.transform.position.z + 8);
+        //camera.LookAt(titan.transform);
     }
     [Range(0,0.005f)]
     public float brushStrength = 0.05f;
@@ -194,8 +194,8 @@ public class TerrainManager : MonoBehaviour {
     void SpawnPeople()
     {
         for (int i = 0; i< peopleNum; i++){
-            int posX = Random.Range(width/4, width *3/ 4);
-            int posZ = Random.Range(height/4, height*3/4);
+            int posX = Random.Range(width*3/4-20, width -50);
+            int posZ = Random.Range(height*3/4 - 20, height-50);
             float posY = heights[posX, posZ] * 100 + 5;
 
             Vector3 position = new Vector3(posX*terrainData.size.x/width, posY, posZ * terrainData.size.z / height);
@@ -217,7 +217,7 @@ public class TerrainManager : MonoBehaviour {
         {
             int posX = Random.Range(width / 4, width * 3 / 4);
             int posZ = Random.Range(height / 4, height * 3 / 4);
-            float posY = heights[posX, posZ] * 100 + 5;
+            float posY = heights[posX, posZ] * 100 + 7;
 
             GameObject tree = Instantiate(treePfb, new Vector3(posX * terrainData.size.x / width, posY, posZ * terrainData.size.z / height), Quaternion.identity) as GameObject;
         }
