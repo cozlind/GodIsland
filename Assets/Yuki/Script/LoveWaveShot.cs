@@ -85,7 +85,6 @@ public class LoveWaveShot : MonoBehaviour {
                 }
                 // hitした位置を格納する
                 hitPoint = hit.point;
-                Debug.logger.Log( hit.transform.gameObject.name );
             }
             else
             {
