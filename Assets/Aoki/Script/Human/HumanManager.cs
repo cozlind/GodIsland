@@ -26,6 +26,8 @@ public class HumanManager : MonoBehaviour, IHumanCreate
     float _minAttack = 1;
     [SerializeField]
     float _minHp = 1;
+    [SerializeField]
+    TreeManager treeManager;
 
     public void Create(HumanStatus status1, HumanStatus status2, Vector3 position)
     {
@@ -45,6 +47,10 @@ public class HumanManager : MonoBehaviour, IHumanCreate
     public void Create(HumanStatus humanStatus, Vector3 position)
     {
         HumanStatus status = humanStatus;
+        status.color = status.color;
+        status.attack = Mathf.Lerp(_minAttack, _maxAttack, HumanStatusAlgorithm.GetBornHpPersent(status.color));
+        status.hp = Mathf.Lerp(_minHp, _maxHp, HumanStatusAlgorithm.GetAttackPersent(status.color));
+
 
         Human human = Instantiate(humanPrefab, humanPrefab.transform.position, Quaternion.identity, this.transform).GetComponent<Human>();
         human.Init(status, FindNearColorMaterial(status.color));
@@ -103,13 +109,24 @@ public class HumanManager : MonoBehaviour, IHumanCreate
             {
                 human.SetTargetPosition( GetRandomTarget() );
             }
+            if (!human.IsTree())
+            {
+                GameObject obj = treeManager.GetTree();
+                if (obj != null)
+                {
+                    human.SetTree(obj);
+                    human.SetTargetPosition(obj.transform.position);
+                }
+            }
             if( human.GetStatus().hp <= 0 )
             {
-                //_HumanList.Remove(human);
+                _HumanList.Remove(human);
 
                 //Destroy(human);
             }
+            
         }
+       
     }
 
     Vector3 GetRandomTarget()

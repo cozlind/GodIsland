@@ -7,6 +7,7 @@ public class AppleTree : MonoBehaviour {
     float timer = 0;
     [SerializeField]
     float aliveTime = 5;
+    public bool isDead = false;
 
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,8 @@ public class AppleTree : MonoBehaviour {
         timer += Time.deltaTime;
         if( timer > aliveTime )
         {
-            Destroy( this.gameObject );
+            isDead = true;
+            //Destroy( this.gameObject );
         }
 		
 	}
