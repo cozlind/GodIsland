@@ -24,9 +24,13 @@ public class LoveWaveShot : MonoBehaviour {
     //[SerializeField]
     // public IHumanCreate humanCreate { get; set; }
 
+    public AudioClip _Create, _Broke;
+    private AudioSource _AS;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera");
+        _AS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -110,10 +114,15 @@ public class LoveWaveShot : MonoBehaviour {
             else if( type == LoveType.Create )
             {
                 tManager.HeightUp();
+                _AS.clip = _Create;
+                _AS.Play();
+
             }
             else
             {
                 tManager.HeightDown();
+                _AS.clip = _Broke;
+                _AS.Play();
             }
             
             
