@@ -37,7 +37,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+>>>>>>> 9c3b430844545da9a7cd07d8bed843a315799aa0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -365,9 +369,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'To select items, To decision items.
-
-    To shoot "Love-Beam".'
+  m_Text: "Used to select items and make your decision or\n shoot LOVE WAVE."
 --- !u!222 &538669872
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -632,7 +634,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Mouse only.
+  m_Text: Mouse Only
 --- !u!222 &891039986
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -956,7 +958,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Right Button + Wheel
+  m_Text: Right Button + Mouse Wheel
 --- !u!222 &1119272612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1045,7 +1047,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: To look around the world.
+  m_Text: Used to look around the world.
 --- !u!222 &1253556247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1119,7 +1121,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Mouse only.
+  m_Text: Mouse Only
 --- !u!222 &1315288950
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1807,7 +1809,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Good morning, Us God!
+  m_Text: Hi, New God
 --- !u!222 &1602616945
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1944,7 +1946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Good morning, us god!
+  m_Text: Hi, New God
 --- !u!222 &1644579316
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2159,30 +2161,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: '"God Game" is Real-time Simulation on god-view.
-
-    Save the human, and defeat "The Blackened Giant". It''s a purpose of this game.
-
-    You can use four "Love-Beam" to help human, and to clear this game.
-
-
-    Love-Beam is teach the love to human.
-
-    Love-Break is destruction by love.
-
-    Love-Create is Creation by love.
-
-    Love-Apple is a fruit of love.
-
-
-    Loved human to love becomes to "The White Angel".
-
-    They can attack by "love-beam" to "The Blackened Giant".
-
-
-    Even if you are strongest, can''t get victory without the power of human.
-
-    The beginning to funny and cruel world! Let''s go!'
+  m_Text: "\"God Game\" is a Real-time Life Simulation Game based on god's view. The
+    \ngoal of this game is to protect your people and lead them finally defeat the
+    \nDark Titan. You can use four kinds of LOVE WAVE to help your people and \nachieve
+    the goal.\n\nLOVE WAVE can teach human to love.\nLOVE BREAK can make destruction
+    by love.\nLOVE CREATION can create things by love.\nLOVE APPLE is a fruit loved
+    by all the people.\n\nThe humans blessed are called as \"The White Angel\". They
+    are capable of\n fighting with the Dark Titan by LOVE WAVE. Even if you have already
+    been\n strong enough, without your people you won't win. \nLet's begin to this
+    both funny and cruel world!"
 --- !u!222 &2050215294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2270,7 +2257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Right Button + Wheel
+  m_Text: Right Button + Mouse Wheel
 --- !u!222 &2104320365
 CanvasRenderer:
   m_ObjectHideFlags: 0

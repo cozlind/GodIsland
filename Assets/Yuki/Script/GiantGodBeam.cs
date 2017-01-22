@@ -20,7 +20,7 @@ public class GiantGodBeam : MonoBehaviour {
     {
         if (col.tag == "human")
         {
-            Destroy(col.gameObject);
+
             blackGiant.aimHuman = null;
             searchCharacter.aimHuman = null;
         }

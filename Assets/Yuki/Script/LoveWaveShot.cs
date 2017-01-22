@@ -19,12 +19,18 @@ public class LoveWaveShot : MonoBehaviour {
 
     [SerializeField]
     TerrainManager tManager;
+    [SerializeField]
+    GameObject treeShot;
     //[SerializeField]
     // public IHumanCreate humanCreate { get; set; }
+
+    public AudioClip _Create, _Broke;
+    private AudioSource _AS;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainCamera");
+        _AS = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,15 +60,15 @@ public class LoveWaveShot : MonoBehaviour {
             //マウスカーソルからRay放射
             // maincameraにtagを設定する
             // boxcolliderをつける
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             //Love波を放つ位置を決める為、メインカメラの位置を取得
             shotPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-            
+
             // 仮想的な線を利用した衝突検出する
             // カメラから、マウス入力のあった位置までの間にある、オブジェクトを格納する
             // 任意の位置から任意の方向に向けて架空の線を出し、その線分上にあるオブジェクトを取得する
 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             // RaycastHit型の変数
             RaycastHit hit;
 
@@ -75,7 +81,7 @@ public class LoveWaveShot : MonoBehaviour {
             // ※第三引数まで必須
 
             // Rayが飛ばされたところから、10000の間にオブジェクトがあればtrueを返し、hitにそれを格納する
-            if (Physics.Raycast(ray, out hit, 10000))
+            if (Physics.Raycast(ray, out hit, 10000,1<<LayerMask.NameToLayer("Ground")))
             {
                 if (hit.collider.gameObject == null)
                 {
@@ -83,7 +89,6 @@ public class LoveWaveShot : MonoBehaviour {
                 }
                 // hitした位置を格納する
                 hitPoint = hit.point;
-                Debug.logger.Log( hit.transform.gameObject.name );
             }
             else
             {
@@ -95,6 +100,10 @@ public class LoveWaveShot : MonoBehaviour {
             }
             if( type == LoveType.Love|| type == LoveType.Glow)
             {
+                if( type == LoveType.Glow )
+                {
+                    LoveWave = treeShot;
+                }
                  GameObject LoveShot = Instantiate(LoveWave, shotPos, transform.rotation);
                  LoveWaveMove love = LoveShot.GetComponent<LoveWaveMove>();
                 if( love != null )
@@ -105,10 +114,15 @@ public class LoveWaveShot : MonoBehaviour {
             else if( type == LoveType.Create )
             {
                 tManager.HeightUp();
+                _AS.clip = _Create;
+                _AS.Play();
+
             }
             else
             {
                 tManager.HeightDown();
+                _AS.clip = _Broke;
+                _AS.Play();
             }
             
             

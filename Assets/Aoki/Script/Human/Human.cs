@@ -14,6 +14,8 @@ public class Human : MonoBehaviour {
     [SerializeField]
     Unit unit;
 
+    GameObject tree;
+
     //[SerializeField]
     //Color _currentColor = new Color();
 
@@ -27,8 +29,14 @@ public class Human : MonoBehaviour {
         //m.SetColor("_Color", _status.color);
     }
 
-    void Start()
+    public bool IsTree()
     {
+        return tree !=null;
+    }
+
+    public void SetTree(GameObject tree)
+    {
+        this.tree = tree;
     }
 
     public HumanStatus GetStatus()
@@ -46,9 +54,5 @@ public class Human : MonoBehaviour {
         unit.target.position = targetPosition;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+ 
 }
