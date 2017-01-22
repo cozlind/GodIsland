@@ -17,27 +17,51 @@ public class CrossFeedUI : MonoBehaviour
     float timer;
     public float fadeSecondTime = 3;
 
+    float alpha;
+
+    float configAlpha;
+
+    bool isClick;
+
     // Use this for initialization
     void Start()
     {
         storys = parent_story.GetComponentsInChildren<Text>();
         configs = parent_config.GetComponentsInChildren<Text>();
+
+        alpha = 1f;
+        for (int i = 0; i < storys.Length; ++i)
+        {
+            Color color = storys[i].color;
+            color.a = alpha;
+            storys[i].color = color;
+        }
+
+        configAlpha = 0f;
+        for (int i = 0; i < configs.Length; ++i)
+        {
+            Color color = configs[i].color;
+            color.a = configAlpha;
+            configs[i].color = color;
+        }
+
+        isClick = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        CrossFeed();
+        if (isClick == true)
+            CrossFeed();
     }
 
     public void CrossFeed()
     {
+        timer += Time.deltaTime;
+
         if (timer < fadeSecondTime)
         {
-            timer += Time.deltaTime;
-            // alphaは0.0～1.0
-            float alpha = Mathf.Lerp(0, 1, timer / fadeSecondTime);
-
+            alpha = Mathf.Lerp(1, 0, timer / fadeSecondTime);
             for (int i = 0; i < storys.Length; ++i)
             {
                 Color color = storys[i].color;
@@ -45,8 +69,8 @@ public class CrossFeedUI : MonoBehaviour
                 storys[i].color = color;
             }
 
-            //aplha値反転
-            float configAlpha = 1 - alpha;
+            //configAlpha = alpha - 1f;
+            configAlpha = Mathf.Lerp(0, 1, timer / fadeSecondTime);
             for (int i = 0; i < configs.Length; ++i)
             {
                 Color color = configs[i].color;
@@ -54,7 +78,19 @@ public class CrossFeedUI : MonoBehaviour
                 configs[i].color = color;
             }
         }
+
+        //if (timer >= fadeSecondTime)
+        //{
+        //    //alpha = Mathf.Lerp(1, 0, (timer/2) / fadeSecondTime);
+        //    //aplha値反転
+        //    //float configAlpha = 1 - alpha;
+
+        //}
     }
 
-    public bool IsClick { get; set; }
+    public bool IsClick
+    {
+        get { return isClick; }
+        set { isClick = value; }
+    }
 }

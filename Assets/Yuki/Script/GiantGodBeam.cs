@@ -18,7 +18,7 @@ public class GiantGodBeam : MonoBehaviour {
     {
         if (col.tag == "human")
         {
-
+            Destroy(col.gameObject);
         }
     }
 }

@@ -71,13 +71,13 @@ public class BlackGiant : MonoBehaviour
 
     private void AttckUpdate()
     {
-        aimHuman = searchHumanArea.GetComponent<SearchCharacter>().aimHuman;
-        Vector3 relativePos = aimHuman.transform.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
-
+        if(aimHuman == null) aimHuman = searchHumanArea.GetComponent<SearchCharacter>().aimHuman;
         if (aimHuman != null)
         {
+            Vector3 relativePos = aimHuman.transform.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(relativePos);
+            transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
+
             blackAnim.SetTrigger("attack");
         }
     }
