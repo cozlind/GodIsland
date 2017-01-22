@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TerrainManager : MonoBehaviour {
 
+    public TerrainData defaultTerrain;
     public Terrain terrain;
     public TerrainData terrainData;
     public float[,] heights;
@@ -27,7 +28,8 @@ public class TerrainManager : MonoBehaviour {
         terrainData = terrain.terrainData;
         width = terrain.terrainData.heightmapWidth;
         height = terrain.terrainData.heightmapHeight;
-        heights = terrain.terrainData.GetHeights(0, 0, width, height);
+        heights = defaultTerrain.GetHeights(0, 0, width, height);
+        terrainData.SetHeights(0, 0, heights);
 
 
 
