@@ -47,5 +47,6 @@ public class HumanAttackCtrl : MonoBehaviour {
     {
         GameObject obj = (GameObject)Instantiate(kamehameha, transform.position + new Vector3 (0,1.3f,0), transform.rotation);
         obj.transform.parent = transform;
+        GetComponent<AudioSource>().Play();
     }
 }
