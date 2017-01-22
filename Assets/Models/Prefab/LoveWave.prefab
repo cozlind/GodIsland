@@ -86,7 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countTime: 3
-  scale: 1
+  scale: 5
   human: {fileID: 0}
   _ParentObjectList: []
 --- !u!135 &135450671925536912
