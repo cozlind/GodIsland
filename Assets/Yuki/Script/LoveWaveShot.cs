@@ -47,8 +47,6 @@ public class LoveWaveShot : MonoBehaviour {
         {
             return;
         }
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin,ray.direction*1000);
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0))
         {
@@ -59,11 +57,12 @@ public class LoveWaveShot : MonoBehaviour {
 
             //Love波を放つ位置を決める為、メインカメラの位置を取得
             shotPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-            
+
             // 仮想的な線を利用した衝突検出する
             // カメラから、マウス入力のあった位置までの間にある、オブジェクトを格納する
             // 任意の位置から任意の方向に向けて架空の線を出し、その線分上にあるオブジェクトを取得する
 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             // RaycastHit型の変数
             RaycastHit hit;
 
@@ -76,7 +75,7 @@ public class LoveWaveShot : MonoBehaviour {
             // ※第三引数まで必須
 
             // Rayが飛ばされたところから、10000の間にオブジェクトがあればtrueを返し、hitにそれを格納する
-            if (Physics.Raycast(ray, out hit, 10000))
+            if (Physics.Raycast(ray, out hit, 10000,1<<LayerMask.NameToLayer("Ground")))
             {
                 if (hit.collider.gameObject == null)
                 {
