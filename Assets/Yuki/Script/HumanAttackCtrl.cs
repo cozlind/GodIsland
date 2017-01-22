@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HumanAttackCtrl : MonoBehaviour {
-    public bool buttle = false;
+    public bool battle = false;
+    public bool locationSort = false;
+    float sortTime = 5;
     public float speed;
     public bool kamehameShot = false;
     public GameObject kamehameha;
@@ -17,7 +19,14 @@ public class HumanAttackCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        AttackUpdate();
+        if (battle == true && locationSort == false) AttackUpdate();
+        if (locationSort == true) sortTime -= Time.deltaTime;
+        if (sortTime <= 0)
+        {
+            battle = false;
+            locationSort = false;
+            sortTime = 5;
+        }
 	}
     public void AttackUpdate()
     {
@@ -30,14 +39,13 @@ public class HumanAttackCtrl : MonoBehaviour {
 
         if (kamehameShot == true)
         {
-          //  Debug.Log("( ;∀;)");
             humanAnim.Play("Human_Kamehameha", 0);
         }
     }
 
     public void Kamehameha()
     {
-        Instantiate(kamehameha, transform.position + new Vector3 (0,1.3f,0), transform.rotation);
-
+        GameObject obj = (GameObject)Instantiate(kamehameha, transform.position + new Vector3 (0,1.3f,0), transform.rotation);
+        obj.transform.parent = transform;
     }
 }

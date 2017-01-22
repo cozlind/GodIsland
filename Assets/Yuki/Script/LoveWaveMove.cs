@@ -44,7 +44,7 @@ public class LoveWaveMove : MonoBehaviour {
             else if( type == LoveType.Love )
             {
                 FieldPos.y += 1;
-                Instantiate(loveField, FieldPos, Quaternion.EulerAngles(0, 0, 0));
+                Instantiate(loveField, FieldPos, Quaternion.Euler(0, 0, 0));
                 
             }
             Destroy(gameObject);

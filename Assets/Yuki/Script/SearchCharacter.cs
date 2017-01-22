@@ -26,7 +26,7 @@ public class SearchCharacter : MonoBehaviour {
         if (col.tag == "human")
         {
             HumanAttackCtrl humanAttackCtrl = col.transform.FindChild("HumanBaseModel").GetComponent<HumanAttackCtrl>();
-            humanAttackCtrl.buttle = true;
+            humanAttackCtrl.battle = true;
             humanAttackCtrl.aimEnemy = GameObject.Find("Black");
         }
          
