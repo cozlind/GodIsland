@@ -29,3 +29,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Standard Assets/Environment/TerrainAssets/SurfaceTextures/Thumbs.db.meta
+Assets/UI/Thumbs.db.meta
+Assets/Yuki/Texture/Thumbs.db.meta
+Assets/yamazaki/Texture/Thumbs.db.meta
