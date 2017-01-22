@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374025088444098}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.09, y: 0, z: 0}
+  m_LocalPosition: {x: -15.59, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4084708271178572}
@@ -171,7 +171,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1490638557
+  randomSeed: 1184979459
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2736,7 +2736,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 2075649510
+  randomSeed: 1725267684
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2790,15 +2790,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -3156,7 +3150,7 @@ ParticleSystem:
     serializedVersion: 3
     enabled: 1
     type: 0
-    radius: 0.01
+    radius: 1.77
     angle: 25
     length: 5
     boxX: 1
@@ -5346,7 +5340,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 385e50d2da908304db56e631a4c90e50, type: 2}
+  - {fileID: 2100000, guid: 61dc4d37bced7924782afd52963d7554, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

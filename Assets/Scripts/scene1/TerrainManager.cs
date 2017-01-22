@@ -71,50 +71,15 @@ public class TerrainManager : MonoBehaviour {
         RaycastHit hit;
         if (!Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButtonDown(0)&&Physics.Raycast(ray,out hit)&&hit.collider!=null)
         {
-            int pointY = (int)(hit.point.x*terrain.terrainData.heightmapWidth/terrain.terrainData.size.x);
-            int pointX = (int)(hit.point.z * terrain.terrainData.heightmapHeight / terrain.terrainData.size.z);
-
-            for (int i = -brushRadius; i <= brushRadius; i++)
-            {
-                for(int j = -brushRadius; j <= brushRadius; j++)
-                {
-                    float distance = Mathf.Sqrt(i * i + j * j);
-                    if (distance <= brushRadius)
-                    {
-                        if (pointX + i < 0 || pointX + i >= width || pointY + j < 0 || pointY + j >= height) continue;
-                        heights[pointX+i, pointY+j] += brushStrength * (brushRadius - distance) / brushRadius;
-                        AlphaMap(pointX + i, pointY + j);
-                    }
-                }
-            }
-            terrain.terrainData.SetHeights(0, 0, heights);
-            terrainData.SetAlphamaps(0, 0, splatmapData);
+            HeightUp();
         }
         else if (Input.GetKey(KeyCode.LeftAlt)&&Input.GetMouseButtonDown(0) && Physics.Raycast(ray, out hit) && hit.collider != null)
         {
-            int pointY = (int)(hit.point.x * terrain.terrainData.heightmapWidth / terrain.terrainData.size.x);
-            int pointX = (int)(hit.point.z * terrain.terrainData.heightmapHeight / terrain.terrainData.size.z);
-
-            for (int i = -brushRadius; i <= brushRadius; i++)
-            {
-                for (int j = -brushRadius; j <= brushRadius; j++)
-                {
-                    float distance = Mathf.Sqrt(i * i + j * j);
-                    if (distance <= brushRadius)
-                    {
-                        if (pointX + i<0||pointX + i >= width || pointY + j<0||pointY + j >= height) continue;
-                        heights[pointX + i, pointY + j] -= brushStrength * (brushRadius - distance) / brushRadius;
-                        if (heights[pointX + i, pointY + j] < 0) heights[pointX + i, pointY + j] = 0;
-                        AlphaMap(pointX + i, pointY + j);
-                    }
-                }
-            }
-            terrain.terrainData.SetHeights(0, 0, heights);
-            terrainData.SetAlphamaps(0, 0, splatmapData);
+            HeightDown();
         }
     }
    
-    public void HeightUp( Vector2 mousePosition )
+    public void HeightUp(  )
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -132,6 +97,34 @@ public class TerrainManager : MonoBehaviour {
                     {
                         if (pointX + i < 0 || pointX + i >= width || pointY + j < 0 || pointY + j >= height) continue;
                         heights[pointX + i, pointY + j] += brushStrength * (brushRadius - distance) / brushRadius;
+                        AlphaMap(pointX + i, pointY + j);
+                    }
+                }
+            }
+            terrain.terrainData.SetHeights(0, 0, heights);
+            terrainData.SetAlphamaps(0, 0, splatmapData);
+        }
+    }
+
+    public void HeightDown()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit) && hit.collider != null)
+        {
+            int pointY = (int)(hit.point.x * terrain.terrainData.heightmapWidth / terrain.terrainData.size.x);
+            int pointX = (int)(hit.point.z * terrain.terrainData.heightmapHeight / terrain.terrainData.size.z);
+
+            for (int i = -brushRadius; i <= brushRadius; i++)
+            {
+                for (int j = -brushRadius; j <= brushRadius; j++)
+                {
+                    float distance = Mathf.Sqrt(i * i + j * j);
+                    if (distance <= brushRadius)
+                    {
+                        if (pointX + i < 0 || pointX + i >= width || pointY + j < 0 || pointY + j >= height) continue;
+                        heights[pointX + i, pointY + j] -= brushStrength * (brushRadius - distance) / brushRadius;
+                        if (heights[pointX + i, pointY + j] < 0) heights[pointX + i, pointY + j] = 0;
                         AlphaMap(pointX + i, pointY + j);
                     }
                 }
