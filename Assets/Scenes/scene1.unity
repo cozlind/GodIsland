@@ -1025,6 +1025,12 @@ Prefab:
       propertyPath: tManager
       value: 
       objectReference: {fileID: 2018286889}
+    - target: {fileID: 114370186691715956, guid: 3443963c4c6398a468a62894a23fcdff,
+        type: 2}
+      propertyPath: treeShot
+      value: 
+      objectReference: {fileID: 1849594381126248, guid: 9b0e78f0937b9394da4b77b6fb5ad26b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3443963c4c6398a468a62894a23fcdff, type: 2}
   m_IsPrefabParent: 0
@@ -3712,7 +3718,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: -83.61301, y: 0, z: 0}
 --- !u!1001 &1946893749
 Prefab:
