@@ -17,6 +17,8 @@ public class LoveWaveShot : MonoBehaviour {
 
     public LoveType type;
 
+    [SerializeField]
+    TerrainManager tManager;
     //[SerializeField]
     // public IHumanCreate humanCreate { get; set; }
 
@@ -87,6 +89,10 @@ public class LoveWaveShot : MonoBehaviour {
             {
                 return;
             }
+            if(  UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject)
+            {
+                return;
+            }
             if( type == LoveType.Love|| type == LoveType.Glow)
             {
                  GameObject LoveShot = Instantiate(LoveWave, shotPos, transform.rotation);
@@ -95,6 +101,14 @@ public class LoveWaveShot : MonoBehaviour {
                 {
                     love.type = type;
                 }
+            }
+            else if( type == LoveType.Create )
+            {
+                tManager.HeightUp();
+            }
+            else
+            {
+                tManager.HeightDown();
             }
             
             

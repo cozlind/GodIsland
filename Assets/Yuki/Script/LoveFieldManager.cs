@@ -18,7 +18,7 @@ public class LoveFieldManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         time = countTime;
-        transform.localScale = new Vector3(scale, scale, scale);
+        //transform.localScale = new Vector3(scale, scale, scale);
         
 	}
 	
@@ -47,8 +47,8 @@ public class LoveFieldManager : MonoBehaviour {
             float randomPosZ = Random.Range(-scale / 2, scale / 2);
             Vector3 position = new Vector3(transform.position.x + randomPosX, transform.position.y + 3, transform.position.z + randomPosZ);
             // Instantiate(human, new Vector3(transform.position.x + randomPos, transform.position.y + 3, transform.position.z + randomPos), transform.rotation);
-            HumanStatus status1 = _ParentObjectList[i * 2].GetComponent<Human>().GetStatus();
-            HumanStatus status2 = _ParentObjectList[i * 2 + 1].GetComponent<Human>().GetStatus();
+            HumanStatus status1 = _ParentObjectList[i * 2].transform.parent.GetComponent<Human>().GetStatus();
+            HumanStatus status2 = _ParentObjectList[i * 2 + 1].transform.parent.GetComponent<Human>().GetStatus();
             IHumanCreate humanCreate = GameObject.Find("HumanManager").GetComponent<HumanManager>();
             humanCreate.Create(status1, status2,position );
             ResultManager.birthHumansNum++;
@@ -65,7 +65,7 @@ public class LoveFieldManager : MonoBehaviour {
             foreach (GameObject obj in targets)
             {
                 float dist = Vector3.Distance(obj.transform.position, transform.position);
-                if (dist <= scale / 2)
+                if (dist <= scale )
                 {
                     humanCount++;
                     _ParentObjectList.Add( obj );
