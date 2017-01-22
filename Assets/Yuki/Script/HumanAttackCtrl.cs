@@ -17,7 +17,7 @@ public class HumanAttackCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        AttackUpdate();
 	}
     public void AttackUpdate()
     {
@@ -30,13 +30,14 @@ public class HumanAttackCtrl : MonoBehaviour {
 
         if (kamehameShot == true)
         {
+          //  Debug.Log("( ;∀;)");
             humanAnim.Play("Human_Kamehameha", 0);
         }
     }
 
     public void Kamehameha()
     {
-        Instantiate(kamehameha, transform.position + new Vector3(-0.313f, 0.646f, 0.314f), transform.rotation);
+        Instantiate(kamehameha, transform.position + new Vector3 (0,1.3f,0), transform.rotation);
 
     }
 }

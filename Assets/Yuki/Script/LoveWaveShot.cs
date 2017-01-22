@@ -47,6 +47,8 @@ public class LoveWaveShot : MonoBehaviour {
         {
             return;
         }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin,ray.direction*1000);
         // マウス入力で左クリックをした瞬間
         if (Input.GetMouseButtonDown(0))
         {
@@ -54,7 +56,6 @@ public class LoveWaveShot : MonoBehaviour {
             //マウスカーソルからRay放射
             // maincameraにtagを設定する
             // boxcolliderをつける
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             //Love波を放つ位置を決める為、メインカメラの位置を取得
             shotPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
