@@ -92,7 +92,7 @@ public class HumanManager : MonoBehaviour, IHumanCreate
                 for (int b = 0; b < division; ++b)
                 {
                     Material material = new Material(drawMaterial);
-                    Color color = new Color(r, g, b, 1) / 4.0f;
+                    Color color = new Color(r/4.0f, g / 4.0f, b / 4.0f, 1);
                     material.SetColor("_Color", color);
                     _MaterialList.Add(material);
                 }

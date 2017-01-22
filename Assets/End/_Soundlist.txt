@@ -21,7 +21,9 @@ input “ü—Í
 kame*2 ‚©‚ß‚Í‚ß”g
 love(breed) ”ÉBLove”g
     (create) ‘n‘¢Love”g
-@@(break) ”j‰óLove”g
+@@(break) ”j‰óLove”g@‚ª“–‚½‚Á‚½
+
+lovewave_shoot Love”g‚ğŒ‚‚Á‚½(‘S•”‹¤’Ê)
 white_birth ”’‚ªY‚Ü‚ê‚½
 
 

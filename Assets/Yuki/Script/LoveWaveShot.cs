@@ -19,6 +19,8 @@ public class LoveWaveShot : MonoBehaviour {
 
     [SerializeField]
     TerrainManager tManager;
+    [SerializeField]
+    GameObject treeShot;
     //[SerializeField]
     // public IHumanCreate humanCreate { get; set; }
 
@@ -83,7 +85,6 @@ public class LoveWaveShot : MonoBehaviour {
                 }
                 // hitした位置を格納する
                 hitPoint = hit.point;
-                Debug.logger.Log( hit.transform.gameObject.name );
             }
             else
             {
@@ -95,6 +96,10 @@ public class LoveWaveShot : MonoBehaviour {
             }
             if( type == LoveType.Love|| type == LoveType.Glow)
             {
+                if( type == LoveType.Glow )
+                {
+                    LoveWave = treeShot;
+                }
                  GameObject LoveShot = Instantiate(LoveWave, shotPos, transform.rotation);
                  LoveWaveMove love = LoveShot.GetComponent<LoveWaveMove>();
                 if( love != null )
