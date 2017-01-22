@@ -35,7 +35,7 @@ public class GrowTree : MonoBehaviour {
                 if (hit.collider.gameObject.tag == "Ground")
                 {
                     hitPoint = hit.point;
-                    Instantiate(tree, hitPoint, Quaternion.EulerAngles(0, 0, 0));
+                    Instantiate(tree, hitPoint, Quaternion.Euler(0, 0, 0));
                 }
             }
             else

@@ -13,24 +13,28 @@ public class Unit : MonoBehaviour {
     Vector3 prevPosition;
     [SerializeField]
     HumanModelCTRL modelCtrl;
+    HumanAttackCtrl humanAttackCtrl;
 
 	void Start() {
         rigidbody = GetComponent<Rigidbody>();
         prevPosition = transform.position;
+        humanAttackCtrl = transform.FindChild("HumanBaseModel").gameObject.GetComponent<HumanAttackCtrl>();
         //PathRequestManager.RequestPath(transform.position,target.position, OnPathFound);
     }
     void Update()
     {
-        Vector3 diff = transform.position - prevPosition;
-        diff.y = 0;
-        if (diff != Vector3.zero)
+        if (humanAttackCtrl.battle == false || humanAttackCtrl.locationSort == true)
         {
-            transform.rotation = Quaternion.LookRotation(diff);
-            
+            Vector3 diff = transform.position - prevPosition;
+            diff.y = 0;
+            if (diff != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(diff);
+
+            }
+            prevPosition = transform.position;
+            modelCtrl.SetSpeed(Mathf.Max((diff.magnitude / speed) / Time.deltaTime, 1));
         }
-        prevPosition = transform.position;
-        modelCtrl.SetSpeed(Mathf.Max((diff.magnitude / speed) / Time.deltaTime, 1));
-        
     }
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
@@ -43,38 +47,44 @@ public class Unit : MonoBehaviour {
 	}
 
 	IEnumerator FollowPath() {
-		Vector3 currentWaypoint = path[0];
+        if (humanAttackCtrl.battle == false || humanAttackCtrl.locationSort == true)
+        {
+            Vector3 currentWaypoint = path[0];
 
-		while (true) {
-            //if (transform.position == currentWaypoint)
-            if (Vector3.Distance(transform.position, currentWaypoint) <= DynamicPathFinding.waypointDistance)
+            while (true)
             {
-				targetIndex ++;
-				if (targetIndex >= path.Length) {
-					yield break;
-				}
-				currentWaypoint = path[targetIndex];
-			}
+                //if (transform.position == currentWaypoint)
+                if (Vector3.Distance(transform.position, currentWaypoint) <= DynamicPathFinding.waypointDistance)
+                {
+                    targetIndex++;
+                    if (targetIndex >= path.Length)
+                    {
+                        yield break;
+                    }
+                    currentWaypoint = path[targetIndex];
+                }
 
-			transform.position = Vector3.MoveTowards(transform.position,currentWaypoint,speed * Time.deltaTime);
-
-
-
-
-            Ray ray = new Ray(transform.position,transform.forward - Vector3.up * 0.1f);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 2))
-            {
-                Debug.DrawRay(ray.origin, ray.direction);
-                rigidbody.velocity = ((currentWaypoint - transform.position) * 1.5f + Vector3.up * 3);
-           
-
-            }
+                transform.position = Vector3.MoveTowards(transform.position, currentWaypoint, speed * Time.deltaTime);
 
 
 
 
-			yield return null;
+                Ray ray = new Ray(transform.position, transform.forward - Vector3.up * 0.1f);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 2))
+                {
+                    Debug.DrawRay(ray.origin, ray.direction);
+                    rigidbody.velocity = ((currentWaypoint - transform.position) * 1.5f + Vector3.up * 3);
+
+
+                }
+
+
+
+
+                yield return null;
+        }
+		
 
 		}
 	}
