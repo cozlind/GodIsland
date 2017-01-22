@@ -30,7 +30,7 @@ public class HumanAttackCtrl : MonoBehaviour {
 
         if (kamehameShot == true)
         {
-            Debug.Log("( ;∀;)");
+          //  Debug.Log("( ;∀;)");
             humanAnim.Play("Human_Kamehameha", 0);
         }
     }
