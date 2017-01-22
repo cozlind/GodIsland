@@ -599,6 +599,11 @@ Prefab:
       propertyPath: speed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114523259742916742, guid: d4761e666abf4664291e33e551a387a2,
+        type: 2}
+      propertyPath: terrainScript
+      value: 
+      objectReference: {fileID: 1569258922}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d4761e666abf4664291e33e551a387a2, type: 2}
   m_IsPrefabParent: 0
@@ -1956,6 +1961,7 @@ MonoBehaviour:
   _maxHp: 10000
   _minAttack: 1
   _minHp: 1
+  treeManager: {fileID: 1627674543}
 --- !u!4 &1486412991
 Transform:
   m_ObjectHideFlags: 0
@@ -2251,8 +2257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46194c27bec292542a121be62078d4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 0}
-  terrainData: {fileID: 0}
+  terrain: {fileID: 1569258924}
+  terrainData: {fileID: 15600000, guid: e7e4f11f84a28d84f8e8a5f29a0fd52f, type: 2}
   height: 0
   width: 0
   peoplePfb: {fileID: 1268200199696050, guid: b15a7af40eaa67941806ab7921bbadd0, type: 2}
@@ -2388,6 +2394,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400006, guid: b544816461f324e56a39767fdeb5b114, type: 2}
   m_PrefabInternal: {fileID: 1572133716}
+--- !u!114 &1627674543 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114976083875868610, guid: 028f583b6f4c77b45a01d580049b5ec5,
+    type: 2}
+  m_PrefabInternal: {fileID: 56233570}
+  m_Script: {fileID: 11500000, guid: 6cb742b60a4e4c642b104fe4ebfc1942, type: 3}
 --- !u!1001 &1642775712
 Prefab:
   m_ObjectHideFlags: 0
@@ -2445,6 +2457,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1061162001767720, guid: def79658d70a90b4a9f6d3f589c97228,
         type: 2}
+    - target: {fileID: 114370186691715956, guid: 3443963c4c6398a468a62894a23fcdff,
+        type: 2}
+      propertyPath: tManager
+      value: 
+      objectReference: {fileID: 1569258922}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3443963c4c6398a468a62894a23fcdff, type: 2}
   m_IsPrefabParent: 0
@@ -3299,7 +3316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015f1ba6cb65e794eb96644c6cc9149d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDistance: 10
+  minDistance: 3
 --- !u!81 &1900439777
 AudioListener:
   m_ObjectHideFlags: 0

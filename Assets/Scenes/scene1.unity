@@ -37,12 +37,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.43747354, g: 0.48529077, b: 0.5655671, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -2923,6 +2923,11 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114985270651944534, guid: 099cff77ce8c9c04cacf64ca0b29b1fe,
+        type: 2}
+      propertyPath: sceneName
+      value: WinResult
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 136687791524016626, guid: 099cff77ce8c9c04cacf64ca0b29b1fe, type: 2}
     - {fileID: 54810155150877280, guid: 099cff77ce8c9c04cacf64ca0b29b1fe, type: 2}
@@ -2938,6 +2943,19 @@ Transform:
   m_PrefabParentObject: {fileID: 4187754076573954, guid: 099cff77ce8c9c04cacf64ca0b29b1fe,
     type: 2}
   m_PrefabInternal: {fileID: 1681686714}
+--- !u!136 &1681686723
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681686715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2
+  m_Height: 8
+  m_Direction: 1
+  m_Center: {x: 0, y: 4, z: 1}
 --- !u!1001 &1684038390
 Prefab:
   m_ObjectHideFlags: 0
@@ -3592,7 +3610,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: -83.61301, y: 0, z: 0}
 --- !u!1001 &1946893749
 Prefab:
