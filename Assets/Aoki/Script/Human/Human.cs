@@ -11,6 +11,9 @@ public class Human : MonoBehaviour {
     [SerializeField]
     Renderer drawRenderer;
 
+    [SerializeField]
+    Unit unit;
+
     //[SerializeField]
     //Color _currentColor = new Color();
 
@@ -36,6 +39,11 @@ public class Human : MonoBehaviour {
     public Color GetColor()
     {
         return _status.color;
+    }
+
+    public void SetTargetPosition(Vector3 targetPosition)
+    {
+        unit.target.position = targetPosition;
     }
 
     // Update is called once per frame

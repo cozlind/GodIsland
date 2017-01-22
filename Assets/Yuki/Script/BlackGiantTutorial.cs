@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackGiant : MonoBehaviour
-{
+public class BlackGiantTutorial : MonoBehaviour {
     public enum Type
     {
         Sleep,
@@ -56,7 +55,7 @@ public class BlackGiant : MonoBehaviour
             blackAnim.SetBool("ready", true);
             bg_type = Type.Ready;
         }
-        sleepTime+= Time.deltaTime;
+        sleepTime += Time.deltaTime;
     }
 
     private void ReadyUpdate()
@@ -66,15 +65,11 @@ public class BlackGiant : MonoBehaviour
             blackAnim.SetBool("attack", true);
             bg_type = Type.Attack;
         }
-        readyTime+= Time.deltaTime;
+        readyTime += Time.deltaTime;
     }
 
     private void AttckUpdate()
     {
-        aimHuman = searchHumanArea.GetComponent<SearchCharacter>().aimHuman;
-        Vector3 relativePos = aimHuman.transform.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(relativePos);
-        transform.rotation = new Quaternion(transform.rotation.x, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).y, transform.rotation.z, Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speed).w);
 
         if (aimHuman != null)
         {

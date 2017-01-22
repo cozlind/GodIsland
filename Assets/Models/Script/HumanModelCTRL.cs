@@ -20,4 +20,8 @@ public class HumanModelCTRL : MonoBehaviour {
         //死亡モーションにする
         humanAnim.Play("Human_dead");
 	}
+    public void SetSpeed( float speed )
+    {
+        humanAnim.SetFloat("speed", speed);
+    }
 }

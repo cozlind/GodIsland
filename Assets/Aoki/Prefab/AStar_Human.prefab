@@ -314,7 +314,7 @@ GameObject:
   - component: {fileID: 114550207111340816}
   m_Layer: 0
   m_Name: AStar_Human
-  m_TagString: Untagged
+  m_TagString: human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 54319279761837492}
   m_Layer: 0
   m_Name: Seeker
-  m_TagString: Untagged
+  m_TagString: human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -966,8 +966,13 @@ MonoBehaviour:
   fieldObj:
     serializedVersion: 2
     m_Bits: 8192
+  humanState: 0
   moveSpeed: 2
   rorateSpeed: 5
+  speed: 3
+  kamehameShot: 0
+  kamehameha: {fileID: 0}
+  aimEnemy: {fileID: 0}
 --- !u!114 &114349883661632958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1007,6 +1012,7 @@ MonoBehaviour:
   _status:
     _Color: {r: 1, g: 0, b: 0, a: 0}
   drawRenderer: {fileID: 137487326295551502}
+  unit: {fileID: 114624481990099032}
 --- !u!114 &114624481990099032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1020,6 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 4869000430081352}
   speed: 1.3
+  modelCtrl: {fileID: 114734072451991240}
 --- !u!114 &114734072451991240
 MonoBehaviour:
   m_ObjectHideFlags: 1
