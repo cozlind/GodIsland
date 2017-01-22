@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countTime: 3
-  scale: 5
+  scale: 10
   human: {fileID: 1296898613549402, guid: 6d311e5adc2bbaa44a16313dde6f5042, type: 2}
   _ParentObjectList: []
 --- !u!135 &135833713097706966

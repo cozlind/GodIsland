@@ -66,7 +66,7 @@ public class TerrainManager : MonoBehaviour {
     void Update () {
         if (Time.time - time < updateTime) return;
         time = updateTime;
-
+        /*
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (!Input.GetKey(KeyCode.LeftAlt) && Input.GetMouseButtonDown(0)&&Physics.Raycast(ray,out hit)&&hit.collider!=null)
@@ -77,6 +77,7 @@ public class TerrainManager : MonoBehaviour {
         {
             HeightDown();
         }
+        */
     }
    
     public void HeightUp(  )
