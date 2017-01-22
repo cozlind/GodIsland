@@ -367,7 +367,7 @@ Prefab:
     - target: {fileID: 114493919594286118, guid: f33326df2de453f4a95476fab9391ecb,
         type: 2}
       propertyPath: _WinLose_flag
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 82705250936460012, guid: f33326df2de453f4a95476fab9391ecb,
         type: 2}
