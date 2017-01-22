@@ -72,8 +72,8 @@ public class LoveWaveShot : MonoBehaviour {
             // 第三引数には衝突情報、第四引数には検知を行う距離、第五引数にはレイヤーマスクをとります
             // ※第三引数まで必須
 
-            // Rayが飛ばされたところから、1000の間にオブジェクトがあればtrueを返し、hitにそれを格納する
-            if (Physics.Raycast(ray, out hit, 1000))
+            // Rayが飛ばされたところから、10000の間にオブジェクトがあればtrueを返し、hitにそれを格納する
+            if (Physics.Raycast(ray, out hit, 10000))
             {
                 if (hit.collider.gameObject == null)
                 {
@@ -81,6 +81,7 @@ public class LoveWaveShot : MonoBehaviour {
                 }
                 // hitした位置を格納する
                 hitPoint = hit.point;
+                Debug.logger.Log( hit.transform.gameObject.name );
             }
             else
             {

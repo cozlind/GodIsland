@@ -23,7 +23,7 @@ public class Unit : MonoBehaviour {
     {
         Vector3 diff = transform.position - prevPosition;
         diff.y = 0;
-        //if (diff.magnitude > 0.1f)
+        if (diff.magnitude != 0f)
         {
             transform.rotation = Quaternion.LookRotation(diff);
             
