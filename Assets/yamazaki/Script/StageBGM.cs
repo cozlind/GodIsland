@@ -5,7 +5,6 @@ using UnityEngine;
 public class StageBGM : MonoBehaviour {
 
     public AudioSource[] _AS = new AudioSource[3];
-    public Transform _Giant;
     public GameObject _range;
     private RangeBGM _RangeBGM;
     private int _rand;
